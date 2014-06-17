@@ -1,0 +1,725 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E6175387193823AF00DB3575 /* JHBrightnessSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E6175386193823AF00DB3575 /* JHBrightnessSlider.m */; };
+		E617538A1938CEBA00DB3575 /* JHWhitePickerWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E61753891938CEBA00DB3575 /* JHWhitePickerWheel.m */; };
+		E61753901938E69700DB3575 /* JHFlowWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E617538F1938E69700DB3575 /* JHFlowWheel.m */; };
+		E62666A8193C588D002897D2 /* White+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E62666A7193C588D002897D2 /* White+Create.m */; };
+		E62666B5193DB9FB002897D2 /* Color+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E62666B4193DB9FB002897D2 /* Color+Create.m */; };
+		E6B0EE67193599CC005565B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE66193599CC005565B8 /* Foundation.framework */; };
+		E6B0EE69193599CC005565B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE68193599CC005565B8 /* CoreGraphics.framework */; };
+		E6B0EE6B193599CC005565B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE6A193599CC005565B8 /* UIKit.framework */; };
+		E6B0EE71193599CC005565B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E6B0EE6F193599CC005565B8 /* InfoPlist.strings */; };
+		E6B0EE73193599CC005565B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EE72193599CC005565B8 /* main.m */; };
+		E6B0EE77193599CC005565B8 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EE76193599CC005565B8 /* JHAppDelegate.m */; };
+		E6B0EE7A193599CC005565B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B0EE78193599CC005565B8 /* Main.storyboard */; };
+		E6B0EE7F193599CC005565B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B0EE7E193599CC005565B8 /* Images.xcassets */; };
+		E6B0EE86193599CC005565B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE85193599CC005565B8 /* XCTest.framework */; };
+		E6B0EE87193599CC005565B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE66193599CC005565B8 /* Foundation.framework */; };
+		E6B0EE88193599CC005565B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE6A193599CC005565B8 /* UIKit.framework */; };
+		E6B0EE90193599CC005565B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E6B0EE8E193599CC005565B8 /* InfoPlist.strings */; };
+		E6B0EE92193599CC005565B8 /* ColumnLightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EE91193599CC005565B8 /* ColumnLightTests.m */; };
+		E6B0EE9D19359CC8005565B8 /* JHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EE9C19359CC8005565B8 /* JHMainViewController.m */; };
+		E6B0EEA71935A03F005565B8 /* JHLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEA61935A03F005565B8 /* JHLeftPanelViewController.m */; };
+		E6B0EEAA1935A047005565B8 /* JHRightPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEA91935A047005565B8 /* JHRightPanelViewController.m */; };
+		E6B0EEAD1935A06A005565B8 /* JHColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEAC1935A06A005565B8 /* JHColorViewController.m */; };
+		E6B0EEB01935A081005565B8 /* JHWhiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEAF1935A081005565B8 /* JHWhiteViewController.m */; };
+		E6B0EEB31935A097005565B8 /* JHTImerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEB21935A097005565B8 /* JHTImerViewController.m */; };
+		E6B0EEB61935A461005565B8 /* JHAddNewSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEB51935A461005565B8 /* JHAddNewSceneViewController.m */; };
+		E6B0EEBB1935BF17005565B8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EEBA1935BF17005565B8 /* CoreData.framework */; };
+		E6B0EEBD1935BF24005565B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EEBC1935BF24005565B8 /* QuartzCore.framework */; };
+		E6B0EEC41935E646005565B8 /* ColumnLight.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEC21935E646005565B8 /* ColumnLight.xcdatamodeld */; };
+		E6B0EECA1935E6E3005565B8 /* Scene+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEC91935E6E3005565B8 /* Scene+Create.m */; };
+		E6B0EECE1935E809005565B8 /* JHSceneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EECC1935E809005565B8 /* JHSceneTableViewCell.m */; };
+		E6B0EECF1935E809005565B8 /* JHSceneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B0EECD1935E809005565B8 /* JHSceneTableViewCell.xib */; };
+		E6B0EED5193615D9005565B8 /* JHPickerWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EED4193615D9005565B8 /* JHPickerWheel.m */; };
+		E6C7BD52193DFBC0005B46B4 /* White.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BD51193DFBC0005B46B4 /* White.m */; };
+		E6C7BD55193DFBC1005B46B4 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BD54193DFBC1005B46B4 /* Color.m */; };
+		E6C7BD58193DFBC1005B46B4 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BD57193DFBC1005B46B4 /* Scene.m */; };
+		E6ECE35819423A5D0085F228 /* JHTimerWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE35719423A5D0085F228 /* JHTimerWheel.m */; };
+		E6ECE3601945F81E0085F228 /* BTDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE35F1945F81E0085F228 /* BTDiscovery.m */; };
+		E6ECE3621946CF0D0085F228 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6ECE3611946CF0D0085F228 /* CoreBluetooth.framework */; };
+		E6ECE365194727600085F228 /* JHLightService.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE364194727600085F228 /* JHLightService.m */; };
+		E6ECE3691948B9990085F228 /* JHDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE3671948B9990085F228 /* JHDeviceTableViewCell.m */; };
+		E6ECE36A1948B9990085F228 /* JHDeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6ECE3681948B9990085F228 /* JHDeviceTableViewCell.xib */; };
+		E6ECE383194DFB210085F228 /* CBPeripheral+Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE382194DFB210085F228 /* CBPeripheral+Timer.m */; };
+		E6ECE38619500A190085F228 /* JHLoadingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE38519500A190085F228 /* JHLoadingHUD.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E6B0EE89193599CC005565B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6B0EE5B193599CC005565B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6B0EE62193599CC005565B8;
+			remoteInfo = ColumnLight;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E6175385193823AF00DB3575 /* JHBrightnessSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBrightnessSlider.h; sourceTree = "<group>"; };
+		E6175386193823AF00DB3575 /* JHBrightnessSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBrightnessSlider.m; sourceTree = "<group>"; };
+		E61753881938CEBA00DB3575 /* JHWhitePickerWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHWhitePickerWheel.h; sourceTree = "<group>"; };
+		E61753891938CEBA00DB3575 /* JHWhitePickerWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHWhitePickerWheel.m; sourceTree = "<group>"; };
+		E617538E1938E69700DB3575 /* JHFlowWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHFlowWheel.h; sourceTree = "<group>"; };
+		E617538F1938E69700DB3575 /* JHFlowWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHFlowWheel.m; sourceTree = "<group>"; };
+		E62666A6193C588D002897D2 /* White+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "White+Create.h"; sourceTree = "<group>"; };
+		E62666A7193C588D002897D2 /* White+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "White+Create.m"; sourceTree = "<group>"; };
+		E62666B3193DB9FB002897D2 /* Color+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Color+Create.h"; sourceTree = "<group>"; };
+		E62666B4193DB9FB002897D2 /* Color+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Color+Create.m"; sourceTree = "<group>"; };
+		E6B0EE63193599CC005565B8 /* ColumnLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColumnLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6B0EE66193599CC005565B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E6B0EE68193599CC005565B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E6B0EE6A193599CC005565B8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E6B0EE6E193599CC005565B8 /* ColumnLight-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColumnLight-Info.plist"; sourceTree = "<group>"; };
+		E6B0EE70193599CC005565B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E6B0EE72193599CC005565B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E6B0EE74193599CC005565B8 /* ColumnLight-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColumnLight-Prefix.pch"; sourceTree = "<group>"; };
+		E6B0EE75193599CC005565B8 /* JHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHAppDelegate.h; sourceTree = "<group>"; };
+		E6B0EE76193599CC005565B8 /* JHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHAppDelegate.m; sourceTree = "<group>"; };
+		E6B0EE79193599CC005565B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E6B0EE7E193599CC005565B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E6B0EE84193599CC005565B8 /* ColumnLightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColumnLightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6B0EE85193599CC005565B8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E6B0EE8D193599CC005565B8 /* ColumnLightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColumnLightTests-Info.plist"; sourceTree = "<group>"; };
+		E6B0EE8F193599CC005565B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E6B0EE91193599CC005565B8 /* ColumnLightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColumnLightTests.m; sourceTree = "<group>"; };
+		E6B0EE9B19359CC8005565B8 /* JHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHMainViewController.h; sourceTree = "<group>"; };
+		E6B0EE9C19359CC8005565B8 /* JHMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHMainViewController.m; sourceTree = "<group>"; };
+		E6B0EEA51935A03F005565B8 /* JHLeftPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLeftPanelViewController.h; sourceTree = "<group>"; };
+		E6B0EEA61935A03F005565B8 /* JHLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLeftPanelViewController.m; sourceTree = "<group>"; };
+		E6B0EEA81935A047005565B8 /* JHRightPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRightPanelViewController.h; sourceTree = "<group>"; };
+		E6B0EEA91935A047005565B8 /* JHRightPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRightPanelViewController.m; sourceTree = "<group>"; };
+		E6B0EEAB1935A06A005565B8 /* JHColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHColorViewController.h; sourceTree = "<group>"; };
+		E6B0EEAC1935A06A005565B8 /* JHColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHColorViewController.m; sourceTree = "<group>"; };
+		E6B0EEAE1935A081005565B8 /* JHWhiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHWhiteViewController.h; sourceTree = "<group>"; };
+		E6B0EEAF1935A081005565B8 /* JHWhiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHWhiteViewController.m; sourceTree = "<group>"; };
+		E6B0EEB11935A097005565B8 /* JHTImerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTImerViewController.h; sourceTree = "<group>"; };
+		E6B0EEB21935A097005565B8 /* JHTImerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTImerViewController.m; sourceTree = "<group>"; };
+		E6B0EEB41935A461005565B8 /* JHAddNewSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAddNewSceneViewController.h; sourceTree = "<group>"; };
+		E6B0EEB51935A461005565B8 /* JHAddNewSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAddNewSceneViewController.m; sourceTree = "<group>"; };
+		E6B0EEBA1935BF17005565B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E6B0EEBC1935BF24005565B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E6B0EEC31935E646005565B8 /* ColumnLight.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ColumnLight.xcdatamodel; sourceTree = "<group>"; };
+		E6B0EEC81935E6E3005565B8 /* Scene+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Scene+Create.h"; sourceTree = "<group>"; };
+		E6B0EEC91935E6E3005565B8 /* Scene+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Scene+Create.m"; sourceTree = "<group>"; };
+		E6B0EECB1935E809005565B8 /* JHSceneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSceneTableViewCell.h; sourceTree = "<group>"; };
+		E6B0EECC1935E809005565B8 /* JHSceneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSceneTableViewCell.m; sourceTree = "<group>"; };
+		E6B0EECD1935E809005565B8 /* JHSceneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHSceneTableViewCell.xib; sourceTree = "<group>"; };
+		E6B0EED3193615D9005565B8 /* JHPickerWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPickerWheel.h; sourceTree = "<group>"; };
+		E6B0EED4193615D9005565B8 /* JHPickerWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPickerWheel.m; sourceTree = "<group>"; };
+		E6B0EED619361647005565B8 /* JHWheelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHWheelDelegate.h; sourceTree = "<group>"; };
+		E6C7BD50193DFBC0005B46B4 /* White.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = White.h; sourceTree = "<group>"; };
+		E6C7BD51193DFBC0005B46B4 /* White.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = White.m; sourceTree = "<group>"; };
+		E6C7BD53193DFBC1005B46B4 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		E6C7BD54193DFBC1005B46B4 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
+		E6C7BD56193DFBC1005B46B4 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		E6C7BD57193DFBC1005B46B4 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
+		E6ECE35619423A5D0085F228 /* JHTimerWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTimerWheel.h; sourceTree = "<group>"; };
+		E6ECE35719423A5D0085F228 /* JHTimerWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTimerWheel.m; sourceTree = "<group>"; };
+		E6ECE35E1945F81E0085F228 /* BTDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDiscovery.h; sourceTree = "<group>"; };
+		E6ECE35F1945F81E0085F228 /* BTDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTDiscovery.m; sourceTree = "<group>"; };
+		E6ECE3611946CF0D0085F228 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E6ECE363194727600085F228 /* JHLightService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLightService.h; sourceTree = "<group>"; };
+		E6ECE364194727600085F228 /* JHLightService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLightService.m; sourceTree = "<group>"; };
+		E6ECE3661948B9990085F228 /* JHDeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHDeviceTableViewCell.h; sourceTree = "<group>"; };
+		E6ECE3671948B9990085F228 /* JHDeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHDeviceTableViewCell.m; sourceTree = "<group>"; };
+		E6ECE3681948B9990085F228 /* JHDeviceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHDeviceTableViewCell.xib; sourceTree = "<group>"; };
+		E6ECE381194DFB210085F228 /* CBPeripheral+Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBPeripheral+Timer.h"; sourceTree = "<group>"; };
+		E6ECE382194DFB210085F228 /* CBPeripheral+Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheral+Timer.m"; sourceTree = "<group>"; };
+		E6ECE38419500A190085F228 /* JHLoadingHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLoadingHUD.h; sourceTree = "<group>"; };
+		E6ECE38519500A190085F228 /* JHLoadingHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLoadingHUD.m; sourceTree = "<group>"; };
+		E6ECE387195023530085F228 /* JHNotificationName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHNotificationName.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E6B0EE60193599CC005565B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6ECE3621946CF0D0085F228 /* CoreBluetooth.framework in Frameworks */,
+				E6B0EEBD1935BF24005565B8 /* QuartzCore.framework in Frameworks */,
+				E6B0EEBB1935BF17005565B8 /* CoreData.framework in Frameworks */,
+				E6B0EE69193599CC005565B8 /* CoreGraphics.framework in Frameworks */,
+				E6B0EE6B193599CC005565B8 /* UIKit.framework in Frameworks */,
+				E6B0EE67193599CC005565B8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6B0EE81193599CC005565B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B0EE86193599CC005565B8 /* XCTest.framework in Frameworks */,
+				E6B0EE88193599CC005565B8 /* UIKit.framework in Frameworks */,
+				E6B0EE87193599CC005565B8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E6B0EE5A193599CC005565B8 = {
+			isa = PBXGroup;
+			children = (
+				E6B0EE6C193599CC005565B8 /* ColumnLight */,
+				E6B0EE8B193599CC005565B8 /* ColumnLightTests */,
+				E6B0EE65193599CC005565B8 /* Frameworks */,
+				E6B0EE64193599CC005565B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E6B0EE64193599CC005565B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EE63193599CC005565B8 /* ColumnLight.app */,
+				E6B0EE84193599CC005565B8 /* ColumnLightTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E6B0EE65193599CC005565B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6ECE3611946CF0D0085F228 /* CoreBluetooth.framework */,
+				E6B0EEBC1935BF24005565B8 /* QuartzCore.framework */,
+				E6B0EEBA1935BF17005565B8 /* CoreData.framework */,
+				E6B0EE66193599CC005565B8 /* Foundation.framework */,
+				E6B0EE68193599CC005565B8 /* CoreGraphics.framework */,
+				E6B0EE6A193599CC005565B8 /* UIKit.framework */,
+				E6B0EE85193599CC005565B8 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6B0EE6C193599CC005565B8 /* ColumnLight */ = {
+			isa = PBXGroup;
+			children = (
+				E6ECE35A1945F7170085F228 /* Bluetooth */,
+				E6B0EED21935ED1E005565B8 /* StoryBoard */,
+				E6B0EED11935E822005565B8 /* XIB */,
+				E6ECE3591945F5EE0085F228 /* View */,
+				E6B0EEC11935E5EB005565B8 /* CoreData */,
+				E6B0EE9E19359CCD005565B8 /* Controller */,
+				E6B0EE75193599CC005565B8 /* JHAppDelegate.h */,
+				E6B0EE76193599CC005565B8 /* JHAppDelegate.m */,
+				E6B0EE7E193599CC005565B8 /* Images.xcassets */,
+				E6B0EE6D193599CC005565B8 /* Supporting Files */,
+			);
+			path = ColumnLight;
+			sourceTree = "<group>";
+		};
+		E6B0EE6D193599CC005565B8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EE6E193599CC005565B8 /* ColumnLight-Info.plist */,
+				E6B0EE6F193599CC005565B8 /* InfoPlist.strings */,
+				E6B0EE72193599CC005565B8 /* main.m */,
+				E6B0EE74193599CC005565B8 /* ColumnLight-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E6B0EE8B193599CC005565B8 /* ColumnLightTests */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EE91193599CC005565B8 /* ColumnLightTests.m */,
+				E6B0EE8C193599CC005565B8 /* Supporting Files */,
+			);
+			path = ColumnLightTests;
+			sourceTree = "<group>";
+		};
+		E6B0EE8C193599CC005565B8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EE8D193599CC005565B8 /* ColumnLightTests-Info.plist */,
+				E6B0EE8E193599CC005565B8 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E6B0EE9E19359CCD005565B8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EE9B19359CC8005565B8 /* JHMainViewController.h */,
+				E6B0EE9C19359CC8005565B8 /* JHMainViewController.m */,
+				E6ECE387195023530085F228 /* JHNotificationName.h */,
+				E6B0EEB81935A5D2005565B8 /* Right */,
+				E6B0EEB91935A5DB005565B8 /* Left */,
+				E6B0EEB71935A5C5005565B8 /* Center */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E6B0EEB71935A5C5005565B8 /* Center */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EEAB1935A06A005565B8 /* JHColorViewController.h */,
+				E6B0EEAC1935A06A005565B8 /* JHColorViewController.m */,
+				E6B0EEAE1935A081005565B8 /* JHWhiteViewController.h */,
+				E6B0EEAF1935A081005565B8 /* JHWhiteViewController.m */,
+				E6B0EEB11935A097005565B8 /* JHTImerViewController.h */,
+				E6B0EEB21935A097005565B8 /* JHTImerViewController.m */,
+			);
+			name = Center;
+			sourceTree = "<group>";
+		};
+		E6B0EEB81935A5D2005565B8 /* Right */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EEB41935A461005565B8 /* JHAddNewSceneViewController.h */,
+				E6B0EEB51935A461005565B8 /* JHAddNewSceneViewController.m */,
+				E6B0EEA81935A047005565B8 /* JHRightPanelViewController.h */,
+				E6B0EEA91935A047005565B8 /* JHRightPanelViewController.m */,
+			);
+			name = Right;
+			sourceTree = "<group>";
+		};
+		E6B0EEB91935A5DB005565B8 /* Left */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EEA51935A03F005565B8 /* JHLeftPanelViewController.h */,
+				E6B0EEA61935A03F005565B8 /* JHLeftPanelViewController.m */,
+			);
+			name = Left;
+			sourceTree = "<group>";
+		};
+		E6B0EEC11935E5EB005565B8 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EEC21935E646005565B8 /* ColumnLight.xcdatamodeld */,
+				E6C7BD56193DFBC1005B46B4 /* Scene.h */,
+				E6C7BD57193DFBC1005B46B4 /* Scene.m */,
+				E6C7BD53193DFBC1005B46B4 /* Color.h */,
+				E6C7BD54193DFBC1005B46B4 /* Color.m */,
+				E6C7BD50193DFBC0005B46B4 /* White.h */,
+				E6C7BD51193DFBC0005B46B4 /* White.m */,
+				E62666B3193DB9FB002897D2 /* Color+Create.h */,
+				E62666B4193DB9FB002897D2 /* Color+Create.m */,
+				E62666A6193C588D002897D2 /* White+Create.h */,
+				E62666A7193C588D002897D2 /* White+Create.m */,
+				E6B0EEC81935E6E3005565B8 /* Scene+Create.h */,
+				E6B0EEC91935E6E3005565B8 /* Scene+Create.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		E6B0EED11935E822005565B8 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EECB1935E809005565B8 /* JHSceneTableViewCell.h */,
+				E6B0EECC1935E809005565B8 /* JHSceneTableViewCell.m */,
+				E6B0EECD1935E809005565B8 /* JHSceneTableViewCell.xib */,
+				E6ECE3661948B9990085F228 /* JHDeviceTableViewCell.h */,
+				E6ECE3671948B9990085F228 /* JHDeviceTableViewCell.m */,
+				E6ECE3681948B9990085F228 /* JHDeviceTableViewCell.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+		E6B0EED21935ED1E005565B8 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0EE78193599CC005565B8 /* Main.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		E6ECE3591945F5EE0085F228 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E6ECE38419500A190085F228 /* JHLoadingHUD.h */,
+				E6ECE38519500A190085F228 /* JHLoadingHUD.m */,
+				E6ECE35619423A5D0085F228 /* JHTimerWheel.h */,
+				E6ECE35719423A5D0085F228 /* JHTimerWheel.m */,
+				E6B0EED619361647005565B8 /* JHWheelDelegate.h */,
+				E617538E1938E69700DB3575 /* JHFlowWheel.h */,
+				E617538F1938E69700DB3575 /* JHFlowWheel.m */,
+				E6B0EED3193615D9005565B8 /* JHPickerWheel.h */,
+				E6B0EED4193615D9005565B8 /* JHPickerWheel.m */,
+				E61753881938CEBA00DB3575 /* JHWhitePickerWheel.h */,
+				E61753891938CEBA00DB3575 /* JHWhitePickerWheel.m */,
+				E6175385193823AF00DB3575 /* JHBrightnessSlider.h */,
+				E6175386193823AF00DB3575 /* JHBrightnessSlider.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E6ECE35A1945F7170085F228 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				E6ECE381194DFB210085F228 /* CBPeripheral+Timer.h */,
+				E6ECE382194DFB210085F228 /* CBPeripheral+Timer.m */,
+				E6ECE35E1945F81E0085F228 /* BTDiscovery.h */,
+				E6ECE35F1945F81E0085F228 /* BTDiscovery.m */,
+				E6ECE363194727600085F228 /* JHLightService.h */,
+				E6ECE364194727600085F228 /* JHLightService.m */,
+			);
+			name = Bluetooth;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E6B0EE62193599CC005565B8 /* ColumnLight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6B0EE95193599CC005565B8 /* Build configuration list for PBXNativeTarget "ColumnLight" */;
+			buildPhases = (
+				E6B0EE5F193599CC005565B8 /* Sources */,
+				E6B0EE60193599CC005565B8 /* Frameworks */,
+				E6B0EE61193599CC005565B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ColumnLight;
+			productName = ColumnLight;
+			productReference = E6B0EE63193599CC005565B8 /* ColumnLight.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E6B0EE83193599CC005565B8 /* ColumnLightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6B0EE98193599CC005565B8 /* Build configuration list for PBXNativeTarget "ColumnLightTests" */;
+			buildPhases = (
+				E6B0EE80193599CC005565B8 /* Sources */,
+				E6B0EE81193599CC005565B8 /* Frameworks */,
+				E6B0EE82193599CC005565B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6B0EE8A193599CC005565B8 /* PBXTargetDependency */,
+			);
+			name = ColumnLightTests;
+			productName = ColumnLightTests;
+			productReference = E6B0EE84193599CC005565B8 /* ColumnLightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E6B0EE5B193599CC005565B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JH;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Alan Jiong Huang";
+				TargetAttributes = {
+					E6B0EE83193599CC005565B8 = {
+						TestTargetID = E6B0EE62193599CC005565B8;
+					};
+				};
+			};
+			buildConfigurationList = E6B0EE5E193599CC005565B8 /* Build configuration list for PBXProject "ColumnLight" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E6B0EE5A193599CC005565B8;
+			productRefGroup = E6B0EE64193599CC005565B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E6B0EE62193599CC005565B8 /* ColumnLight */,
+				E6B0EE83193599CC005565B8 /* ColumnLightTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E6B0EE61193599CC005565B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B0EECF1935E809005565B8 /* JHSceneTableViewCell.xib in Resources */,
+				E6ECE36A1948B9990085F228 /* JHDeviceTableViewCell.xib in Resources */,
+				E6B0EE7F193599CC005565B8 /* Images.xcassets in Resources */,
+				E6B0EE71193599CC005565B8 /* InfoPlist.strings in Resources */,
+				E6B0EE7A193599CC005565B8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6B0EE82193599CC005565B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B0EE90193599CC005565B8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E6B0EE5F193599CC005565B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B0EE77193599CC005565B8 /* JHAppDelegate.m in Sources */,
+				E6ECE35819423A5D0085F228 /* JHTimerWheel.m in Sources */,
+				E6B0EEB01935A081005565B8 /* JHWhiteViewController.m in Sources */,
+				E6B0EEC41935E646005565B8 /* ColumnLight.xcdatamodeld in Sources */,
+				E6ECE365194727600085F228 /* JHLightService.m in Sources */,
+				E6C7BD58193DFBC1005B46B4 /* Scene.m in Sources */,
+				E6ECE383194DFB210085F228 /* CBPeripheral+Timer.m in Sources */,
+				E617538A1938CEBA00DB3575 /* JHWhitePickerWheel.m in Sources */,
+				E6B0EE9D19359CC8005565B8 /* JHMainViewController.m in Sources */,
+				E6C7BD55193DFBC1005B46B4 /* Color.m in Sources */,
+				E6C7BD52193DFBC0005B46B4 /* White.m in Sources */,
+				E62666B5193DB9FB002897D2 /* Color+Create.m in Sources */,
+				E6B0EEAD1935A06A005565B8 /* JHColorViewController.m in Sources */,
+				E6B0EEB31935A097005565B8 /* JHTImerViewController.m in Sources */,
+				E6175387193823AF00DB3575 /* JHBrightnessSlider.m in Sources */,
+				E6ECE3601945F81E0085F228 /* BTDiscovery.m in Sources */,
+				E6B0EED5193615D9005565B8 /* JHPickerWheel.m in Sources */,
+				E6B0EEAA1935A047005565B8 /* JHRightPanelViewController.m in Sources */,
+				E6B0EEA71935A03F005565B8 /* JHLeftPanelViewController.m in Sources */,
+				E6B0EEB61935A461005565B8 /* JHAddNewSceneViewController.m in Sources */,
+				E6B0EECA1935E6E3005565B8 /* Scene+Create.m in Sources */,
+				E6ECE3691948B9990085F228 /* JHDeviceTableViewCell.m in Sources */,
+				E6B0EECE1935E809005565B8 /* JHSceneTableViewCell.m in Sources */,
+				E62666A8193C588D002897D2 /* White+Create.m in Sources */,
+				E6B0EE73193599CC005565B8 /* main.m in Sources */,
+				E6ECE38619500A190085F228 /* JHLoadingHUD.m in Sources */,
+				E61753901938E69700DB3575 /* JHFlowWheel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6B0EE80193599CC005565B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B0EE92193599CC005565B8 /* ColumnLightTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E6B0EE8A193599CC005565B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6B0EE62193599CC005565B8 /* ColumnLight */;
+			targetProxy = E6B0EE89193599CC005565B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E6B0EE6F193599CC005565B8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E6B0EE70193599CC005565B8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E6B0EE78193599CC005565B8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E6B0EE79193599CC005565B8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E6B0EE8E193599CC005565B8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E6B0EE8F193599CC005565B8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E6B0EE93193599CC005565B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E6B0EE94193599CC005565B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E6B0EE96193599CC005565B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColumnLight/ColumnLight-Prefix.pch";
+				INFOPLIST_FILE = "ColumnLight/ColumnLight-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E6B0EE97193599CC005565B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColumnLight/ColumnLight-Prefix.pch";
+				INFOPLIST_FILE = "ColumnLight/ColumnLight-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E6B0EE99193599CC005565B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ColumnLight.app/ColumnLight";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColumnLight/ColumnLight-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ColumnLightTests/ColumnLightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E6B0EE9A193599CC005565B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ColumnLight.app/ColumnLight";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColumnLight/ColumnLight-Prefix.pch";
+				INFOPLIST_FILE = "ColumnLightTests/ColumnLightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E6B0EE5E193599CC005565B8 /* Build configuration list for PBXProject "ColumnLight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6B0EE93193599CC005565B8 /* Debug */,
+				E6B0EE94193599CC005565B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6B0EE95193599CC005565B8 /* Build configuration list for PBXNativeTarget "ColumnLight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6B0EE96193599CC005565B8 /* Debug */,
+				E6B0EE97193599CC005565B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6B0EE98193599CC005565B8 /* Build configuration list for PBXNativeTarget "ColumnLightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6B0EE99193599CC005565B8 /* Debug */,
+				E6B0EE9A193599CC005565B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E6B0EEC21935E646005565B8 /* ColumnLight.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E6B0EEC31935E646005565B8 /* ColumnLight.xcdatamodel */,
+			);
+			currentVersion = E6B0EEC31935E646005565B8 /* ColumnLight.xcdatamodel */;
+			path = ColumnLight.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E6B0EE5B193599CC005565B8 /* Project object */;
+}
