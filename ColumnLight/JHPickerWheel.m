@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) CALayer *centerShadowLayer;
 @property (nonatomic, strong) CALayer *contourShadowLayer;
-@property (nonatomic, strong) CALayer *sectorBrightnessLayer;
+@property (nonatomic, strong) CAShapeLayer *sectorBrightnessLayer;
 
 - (float)calculateDistanceFromCenter:(CGPoint)point;
 - (void)buildSectorEven;
@@ -49,6 +49,7 @@ static float deltaAngle;
 		self.delegate = delegate;
 		
 		[self drawWheel];
+		[self.layer insertSublayer:self.sectorBrightnessLayer atIndex:1];
 		[self setPanelShadow:self.brightness];
 	}
 
@@ -118,14 +119,31 @@ static float deltaAngle;
 
 	
 }
+#pragma mark - Setter & Getter -
 - (CALayer *)sectorBrightnessLayer
 {
-	if (!_sectorBrightnessLayer) _sectorBrightnessLayer = [[CALayer alloc] init];
+	if (!_sectorBrightnessLayer) {
+		_sectorBrightnessLayer = [CAShapeLayer layer];
+		_sectorBrightnessLayer.path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
+																	 radius:146
+																 startAngle:0.0
+																   endAngle:360.0
+																  clockwise:YES].CGPath;
+		_sectorBrightnessLayer.backgroundColor = [UIColor blackColor].CGColor;
+		
+	}
 	return _sectorBrightnessLayer;
 }
 - (CALayer *)centerShadowLayer
 {
-	if (!_centerShadowLayer) _centerShadowLayer = [[CALayer alloc] init];
+	if (!_centerShadowLayer) {
+		_centerShadowLayer = [[CALayer alloc] init];
+		_centerShadowLayer.shadowPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
+																	   radius:90
+																   startAngle:0.0
+																	 endAngle:360.0
+																	clockwise:YES].CGPath;
+	}
 	return _centerShadowLayer;
 }
 
@@ -213,41 +231,30 @@ static float deltaAngle;
 
 #pragma mark - Slider Delegate
 
-- (void)sliderDidChangeBrightness:(CGFloat)brightness
+- (void)sliderContinueChangingBrightness:(CGFloat)brightness
+{
+	[self setPanelShadow:brightness];
+}
+- (void)sliderEndChangingBrightness:(CGFloat)brightness
 {
 	self.brightness = brightness;
 	[self.delegate wheelDidChangeSectorNumber:self.currentSector andBrightness:self.brightness];
 	
 	[self setPanelShadow:brightness];
 }
+#pragma mark - Components state update -
 
 - (void)setPanelShadow:(CGFloat)percent
 {
-	
-	UIBezierPath *brightnessCircle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
-																 radius:146
-															 startAngle:0.0
-															   endAngle:360.0
-															  clockwise:YES];
-	[self.sectorBrightnessLayer removeFromSuperlayer];
-	self.sectorBrightnessLayer.shadowPath = brightnessCircle.CGPath;
-	self.sectorBrightnessLayer.shadowOpacity = 0.3 * (1 - percent);//typical 0.01
-	self.sectorBrightnessLayer.shadowRadius = 3;
-	self.sectorBrightnessLayer.shadowOffset = CGSizeZero;
-	[self.layer insertSublayer:self.sectorBrightnessLayer atIndex:1];
+	//[self.sectorBrightnessLayer removeFromSuperlayer];
+	self.sectorBrightnessLayer.opacity = 0.55 - 0.5 * percent;
+	//[self.layer insertSublayer:self.sectorBrightnessLayer atIndex:1];
 	
 }
 
-#pragma mark -
 -(void)switchOn
 {
-	UIBezierPath *innerCenterCircle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
-																	 radius:90
-																 startAngle:0.0
-																   endAngle:360.0
-																  clockwise:YES];
 	[self.centerShadowLayer removeFromSuperlayer];
-	self.centerShadowLayer.shadowPath = innerCenterCircle.CGPath;
 	self.centerShadowLayer.shadowOpacity = 0.f ; // typical 3 * brightness
 	self.centerShadowLayer.shadowRadius = 10;
 	self.centerShadowLayer.shadowOffset = CGSizeZero;
@@ -256,13 +263,7 @@ static float deltaAngle;
 }
 - (void)switchOff
 {
-	UIBezierPath *innerCenterCircle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
-																	 radius:90
-																 startAngle:0.0
-																   endAngle:360.0
-																  clockwise:YES];
 	[self.centerShadowLayer removeFromSuperlayer];
-	self.centerShadowLayer.shadowPath = innerCenterCircle.CGPath;
 	self.centerShadowLayer.shadowOpacity = 0.9; // typical 3 * brightness
 	self.centerShadowLayer.shadowRadius = 30;
 	self.centerShadowLayer.shadowOffset = CGSizeZero;

@@ -11,7 +11,7 @@
 #import "BTDiscovery.h"
 #import "JHLightService.h"
 
-@interface JHLeftPanelViewController () <UITableViewDataSource, UITableViewDelegate, BTDiscoveryDelegate, JHLightServiceDelegate>
+@interface JHLeftPanelViewController () <UITableViewDataSource, UITableViewDelegate, BTDiscoveryDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *deviceTableView;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
@@ -43,7 +43,7 @@
 - (void)initBTDiscovery
 {
 	[[BTDiscovery sharedInstance] setDiscoveryDelegate:self];
-	[[BTDiscovery sharedInstance] setPeripheralDelegate:self];
+	//[[BTDiscovery sharedInstance] setPeripheralDelegate:self];
 	//[self launchScanning];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self

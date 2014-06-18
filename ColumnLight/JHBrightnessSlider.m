@@ -56,7 +56,7 @@
 	self.currentValue = currentValue;
 	CGFloat brightness = [self calculateBrightness];
 	[self setNeedsDisplay];
-	[self.delegate sliderDidChangeBrightness:brightness];
+	[self.delegate sliderEndChangingBrightness:brightness];
 }
 
 - (CGFloat)calculateBrightness
@@ -89,17 +89,18 @@
 	}else if (self.currentValue > self.frame.size.width - self.barOffset) {
 		self.currentValue = self.frame.size.width - self.barOffset;
 	}
-	CGFloat brightness = (self.currentValue - self.barOffset) / (self.frame.size.width - 2 * self.barOffset);
+	CGFloat brightness = [self calculateBrightness];
 	//NSLog(@"moving");
 	[self setNeedsDisplay];
-	[self.delegate sliderDidChangeBrightness:brightness];
+	[self.delegate sliderContinueChangingBrightness:brightness];
 	
 	return YES;
 }
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	
+	CGFloat brightness = [self calculateBrightness];
+	[self.delegate sliderEndChangingBrightness:brightness];
 }
 
 - (void)moveHandle:(CGFloat)movement

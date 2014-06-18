@@ -26,6 +26,9 @@ extern NSString *kColorServiceEnteredForegroundNotification;
 
 - (void)lightServiceDidChangeStatus:(JHLightService *)service;
 
+- (void)lightServiceDidSwitchOnPower:(JHLightService *)service;
+- (void)lightServiceDidSwitchOffPower:(JHLightService *)service;
+
 @end
 
 

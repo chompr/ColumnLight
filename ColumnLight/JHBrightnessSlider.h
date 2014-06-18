@@ -11,7 +11,8 @@
 @protocol JHBrightnessSlidereDelegate <NSObject>
 
 @required
-- (void)sliderDidChangeBrightness:(CGFloat)brightness;
+- (void)sliderContinueChangingBrightness:(CGFloat)brightness;
+- (void)sliderEndChangingBrightness:(CGFloat)brightness;
 
 @end
 

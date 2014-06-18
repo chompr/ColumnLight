@@ -161,6 +161,8 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 		if ([[characteristic UUID] isEqual:self.powerUUID]) {
 			NSLog(@"Discovered power characteristic %@",[characteristic UUID]);
 			self.powerCharacteristic = characteristic;
+			[self.CLPeripheral readValueForCharacteristic:self.powerCharacteristic];
+			[self.CLPeripheral setNotifyValue:YES forCharacteristic:self.powerCharacteristic];
 		}
 	}
 	
@@ -268,12 +270,35 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 //invoked when characteristic changed its value
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
+	uint8_t value = 0;
 	
+	if (peripheral != self.CLPeripheral) {
+		NSLog(@"Wrong peripheral.");
+		return;
+	}
+	
+	if (error) {
+		NSLog(@"ERROR: %@", [error localizedDescription]);
+		return;
+	}
+	
+	if ([[characteristic UUID] isEqual:self.powerUUID]) {
+		[[self.powerCharacteristic value] getBytes:&value length:sizeof(value)];
+		NSLog(@"Power state: 0x%x", value);
+		if (value & 0x01) {
+			NSLog(@"Switch is on");
+			[self.delegate lightServiceDidSwitchOnPower:self];
+		} else {
+			NSLog(@"Switch is off");
+			[self.delegate lightServiceDidSwitchOffPower:self];
+		}
+	}
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-	
+	/* When a write occurs, need to set off a re-read of the local CBCharacteristic to update its value */
+    [peripheral readValueForCharacteristic:characteristic];
 }
 
 @end

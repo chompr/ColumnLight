@@ -72,6 +72,7 @@
 
 	
 }
+
 - (void)switchIsPushed
 {
 	if (!self.switchIsOn) {

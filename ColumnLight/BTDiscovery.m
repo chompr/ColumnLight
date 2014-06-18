@@ -337,16 +337,19 @@
 		case CBCentralManagerStateUnauthorized:
 		{
 			NSLog(@"BLE state unauthorized");
+			[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HUDSearchingDevicesNotification object:nil]];
 			break;
 		}
 		case CBCentralManagerStateUnknown:
 		{
 			NSLog(@"BLE state unknow");
+			[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HUDSearchingDevicesNotification object:nil]];
 			break;
 		}
 		case CBCentralManagerStateUnsupported:
 		{
 			NSLog(@"BLE state unsupported");
+			[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HUDSearchingDevicesNotification object:nil]];
 			break;
 		}
 	}

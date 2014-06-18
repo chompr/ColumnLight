@@ -38,7 +38,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 #define PANEL_WIDTH 60
 //#define SLIDE_TIMING .30
 
-@interface JHMainViewController () <JHColorViewControllerDelegate, JHWhiteViewControllerDelegate, JHTimerViewControllerDelegate, UIGestureRecognizerDelegate, JHLeftPanelViewDelegate>
+@interface JHMainViewController () <JHColorViewControllerDelegate, JHWhiteViewControllerDelegate, JHTimerViewControllerDelegate, UIGestureRecognizerDelegate, JHLeftPanelViewDelegate, JHLightServiceDelegate>
 
 @property (nonatomic, strong) JHColorViewController *colorVC;
 @property (nonatomic, strong) JHWhiteViewController *whiteVC;
@@ -173,6 +173,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	[self.leftPanelVC didMoveToParentViewController:self];
 	self.leftPanelVC.delegate = self;
 	self.leftPanelVC.view.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height - 20);
+	[[BTDiscovery sharedInstance] setPeripheralDelegate:self];
 	
 	//******************************* Right ViewControllers **************************************
 	self.rightPanelVC = [storyBoard instantiateViewControllerWithIdentifier:@"RightPanelViewController"];
@@ -322,7 +323,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 		//[self.MainTBC.view.layer setShadowOffset:CGSizeMake(offset, offset)];
 	}
 }
-#pragma mark - Delegate Methods -
+#pragma mark - Center Controllers Delegate Methods -
 
 - (void)didPushTheSwitchButton
 {
@@ -334,7 +335,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 		self.switchIsOn = self.whiteVC.switchIsOn;
 		self.colorVC.switchIsOn = self.whiteVC.switchIsOn;
 	} else if (index == 2) {
-#warning add timer vc support later;
+#warning add timer vc support later write power on/off state from here
 		// for timer VC
 	}
 	if (self.switchIsOn) {
@@ -343,6 +344,29 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 		[self switchComponentOff];
 	}
 	
+}
+#pragma mark - Service Delegate Methods -
+- (void)lightServiceDidSwitchOnPower:(JHLightService *)service
+{
+	self.switchIsOn = YES;
+	self.colorVC.switchIsOn = self.switchIsOn;
+	self.whiteVC.switchIsOn = self.switchIsOn;
+	if (self.switchIsOn) {
+		[self switchComponentOn];
+	} else {
+		[self switchComponentOff];
+	}
+}
+- (void)lightServiceDidSwitchOffPower:(JHLightService *)service
+{
+	self.switchIsOn = NO;
+	self.colorVC.switchIsOn = self.switchIsOn;
+	self.whiteVC.switchIsOn = self.switchIsOn;
+	if (self.switchIsOn) {
+		[self switchComponentOn];
+	} else {
+		[self switchComponentOff];
+	}
 }
 
 - (void)switchComponentOn
