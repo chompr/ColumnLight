@@ -154,9 +154,9 @@
 
 - (void)updateNewColor:(UIColor *)color andBrightness:(CGFloat)brightness
 {
-	double red, green, blue;
+	CGFloat red, green, blue;
 	[color getRed:&red green:&green blue:&blue alpha:NULL];
-	
+
 	int redInt = red * 255;
 	int greenInt = green * 255;
 	int blueInt = blue * 255;

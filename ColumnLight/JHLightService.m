@@ -8,6 +8,7 @@
 
 #import "JHLightService.h"
 
+/*
 NSString *kColorServiceUUIDString = @"fff0";
 
 NSString *kRedCharacteristicUUIDString = @"fff1";
@@ -15,9 +16,10 @@ NSString *kGreenCharacteristicUUIDString = @"fff2";
 NSString *kBlueCharacteristicUUIDString = @"fff3";
 NSString *kWhiteCharacteristicUUIDString = @"fff4";
 NSString *kPowerCharacteristicUUIDString = @"fff5";
+*/
 
-NSString *kColorServiceEnteredBackgroundNotification = @"kColorServiceEnteredBackgroundNotification";
-NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredForegroundNotification";
+//NSString *kColorServiceEnteredBackgroundNotification = @"kColorServiceEnteredBackgroundNotification";
+//NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredForegroundNotification";
 
 @interface JHLightService () <CBPeripheralDelegate>
 
@@ -34,11 +36,13 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 @property (nonatomic, strong) CBCharacteristic *powerCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *ambLightCharacteristic;
 
+/*
 @property (nonatomic, strong) CBUUID *redUUID;
 @property (nonatomic, strong) CBUUID *greenUUID;
 @property (nonatomic, strong) CBUUID *blueUUID;
 @property (nonatomic, strong) CBUUID *whiteUUID;
 @property (nonatomic, strong) CBUUID *powerUUID;
+*/
 
 @end
 
@@ -53,11 +57,15 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 		self.CLPeripheral.delegate = self;
 		self.delegate = delegate;
 		
+/*
 		self.redUUID = [CBUUID UUIDWithString:kRedCharacteristicUUIDString];
 		self.greenUUID = [CBUUID UUIDWithString:kGreenCharacteristicUUIDString];
 		self.blueUUID = [CBUUID UUIDWithString:kBlueCharacteristicUUIDString];
 		self.whiteUUID = [CBUUID UUIDWithString:kWhiteCharacteristicUUIDString];
-		self.powerUUID = [CBUUID UUIDWithString:kPowerCharacteristicUUIDString];
+		self.powerUUID = [CBUUID UUIDWithString:
+            kPowerCharacteristicUUIDString];
+ */
+        
 	}
 	return self;
 }
@@ -73,20 +81,24 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 
 - (void)start
 {
+/*
 	CBUUID *serviceUUID = [CBUUID UUIDWithString:kColorServiceUUIDString];
 	NSArray *serviceArray = [NSArray arrayWithObjects:serviceUUID, nil];
-	
+*/
+    
+    NSArray *serviceArray = [NSArray arrayWithObjects:COLOR_SERVICE_UUID, nil];
+
 	[self.CLPeripheral discoverServices:serviceArray];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
 	NSArray *services = nil;
-	NSArray *uuids = [NSArray arrayWithObjects:self.redUUID,
-					  self.greenUUID,
-					  self.blueUUID,
-					  self.whiteUUID,
-					  self.powerUUID,nil];
+	NSArray *uuids = [NSArray arrayWithObjects:RED_CHAR_UUID,
+					  GREEN_CHAR_UUID,
+					  BLUE_CHAR_UUID,
+					  WHITE_CHAR_UUID,
+					  POWER_CHAR_UUID,nil];
 	
 	if (peripheral != self.CLPeripheral) {
 		NSLog(@"Wrong peripheral.\n");
@@ -105,7 +117,7 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 	}
 	
 	for (CBService *service in services) {
-		if ([[service UUID] isEqual:[CBUUID UUIDWithString:kColorServiceUUIDString]]) {
+		if ([service.UUID isEqual:COLOR_SERVICE_UUID]) {
 			self.colorService = service;
 			break;
 		}
@@ -138,27 +150,27 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 	
 	for (CBCharacteristic *characteristic in characteristics) {
 				
-		if ([[characteristic UUID] isEqual:self.redUUID]) {
+		if ([characteristic.UUID isEqual:RED_CHAR_UUID]) {
 			NSLog(@"Discovered red characteristic %@",[characteristic UUID]);
 			self.redCharacteristic = characteristic;
 		}
 		
-		if ([[characteristic UUID] isEqual:self.greenUUID]) {
+		if ([characteristic.UUID isEqual:GREEN_CHAR_UUID]) {
 			NSLog(@"Discovered green characteristic %@",[characteristic UUID]);
 			self.greenCharacteristic = characteristic;
 		}
 		
-		if ([[characteristic UUID] isEqual:self.blueUUID]) {
+		if ([characteristic.UUID isEqual:BLUE_CHAR_UUID]) {
 			NSLog(@"Discovered blue characteristic %@",[characteristic UUID]);
 			self.blueCharacteristic = characteristic;
 		}
 		
-		if ([[characteristic UUID] isEqual:self.whiteUUID]) {
+		if ([characteristic.UUID isEqual:WHITE_CHAR_UUID]) {
 			NSLog(@"Discovered white characteristic %@",[characteristic UUID]);
 			self.whiteCharacteristic = characteristic;
 		}
 		
-		if ([[characteristic UUID] isEqual:self.powerUUID]) {
+		if ([characteristic.UUID isEqual:POWER_CHAR_UUID]) {
 			NSLog(@"Discovered power characteristic %@",[characteristic UUID]);
 			self.powerCharacteristic = characteristic;
 			[self.CLPeripheral readValueForCharacteristic:self.powerCharacteristic];
@@ -282,7 +294,7 @@ NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredFor
 		return;
 	}
 	
-	if ([[characteristic UUID] isEqual:self.powerUUID]) {
+	if ([characteristic.UUID isEqual:POWER_CHAR_UUID]) {
 		[[self.powerCharacteristic value] getBytes:&value length:sizeof(value)];
 		NSLog(@"Power state: 0x%x", value);
 		if (value & 0x01) {

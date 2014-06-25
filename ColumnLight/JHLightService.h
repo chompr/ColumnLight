@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
+#define COLOR_SERVICE_UUID [CBUUID UUIDWithString:@"fff0"]
+
+#define RED_CHAR_UUID      [CBUUID UUIDWithString:@"fff1"]
+#define GREEN_CHAR_UUID    [CBUUID UUIDWithString:@"fff2"]
+#define BLUE_CHAR_UUID     [CBUUID UUIDWithString:@"fff3"]
+#define WHITE_CHAR_UUID    [CBUUID UUIDWithString:@"fff4"]
+#define POWER_CHAR_UUID    [CBUUID UUIDWithString:@"fff5"]
+
+/*
 extern NSString *kColorServiceUUIDString;
 
 extern NSString *kRedCharacteristicUUIDString;
@@ -16,9 +25,15 @@ extern NSString *kGreenCharacteristicUUIDString;
 extern NSString *kBlueCharacteristicUUIDString;
 extern NSString *kWhiteCharacteristicUUIDString;
 extern NSString *kPowerCharacteristicUUIDString;
+*/
+//extern NSString *kColorServiceEnteredBackgroundNotification;
+//extern NSString *kColorServiceEnteredForegroundNotification;
 
-extern NSString *kColorServiceEnteredBackgroundNotification;
-extern NSString *kColorServiceEnteredForegroundNotification;
+#define kColorServiceEnteredBackgroundNotification @"kColorServiceEnteredBackgroundNotification"
+#define kColorServiceEnteredForegroundNotification @"kColorServiceEnteredForegroundNotification"
+
+//static NSString *kColorServiceEnteredBackgroundNotification = @"kColorServiceEnteredBackgroundNotification";
+//static NSString *kColorServiceEnteredForegroundNotification = @"kColorServiceEnteredForegroundNotification";
 
 @class JHLightService;
 
