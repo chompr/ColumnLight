@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UIColor *selectedColor;
 
+@property (nonatomic, assign) BOOL isOnTheMainScreen;
 @property (nonatomic, assign) BOOL debug;
 //@property (nonatomic, readonly) BOOL isInReOrderingMode;
 - (void)callEditMode;

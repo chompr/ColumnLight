@@ -67,7 +67,7 @@ static float deltaAngle;
 	
 	// ----- Create sectors
 	for (int i = 0; i < self.numberOfSections; i++) {
-		JHPickerWheelSectorView *im = [[JHPickerWheelSectorView alloc] initWithFrame:CGRectMake(0, 0, 150, 52) andColor:[self.colors objectAtIndex:i]];
+		JHPickerWheelSectorView *im = [[JHPickerWheelSectorView alloc] initWithFrame:CGRectMake(0, 0, 148, 52) andColor:[self.colors objectAtIndex:i]];
 
 		//im.backgroundColor = [self.whiteColors objectAtIndex:i];
 		//im.image = [UIImage imageNamed:[NSString stringWithFormat:@"segment.png"]];
@@ -108,8 +108,7 @@ static float deltaAngle;
 															 startAngle:0.0
 															   endAngle:360.0
 															  clockwise:YES];
-	[[UIColor whiteColor] setFill];
-	[contourCircle fill];
+	
 	// this shadows opacity is a constant;
 	self.layer.shadowPath = contourCircle.CGPath;
 	self.layer.shadowOpacity = 0.f; // typically 0.05
@@ -370,7 +369,7 @@ static float deltaAngle;
 	UIBezierPath *aPath = [UIBezierPath bezierPath];
 	
 	[aPath moveToPoint:CGPointMake(0.0, 0.0)];
-	[aPath addLineToPoint:CGPointMake(150, 26)];
+	[aPath addLineToPoint:CGPointMake(149, 26)];
 	[aPath addLineToPoint:CGPointMake(0.0, 52)];
 	
 	aPath.lineWidth = 1;

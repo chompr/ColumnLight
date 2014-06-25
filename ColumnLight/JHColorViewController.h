@@ -15,7 +15,6 @@
 - (void)movePanelLeft;
 - (void)movePanelRight;
 - (void)movePanelToOriginalPosition;
-- (void)didSendNewColorValue;
 
 @required
 - (void)didPushTheSwitchButton;
@@ -28,12 +27,13 @@
 
 @property (nonatomic, assign) id<JHColorViewControllerDelegate> delegate;
 
+// UI Components
 @property (nonatomic, strong) JHFlowWheel *wheel;
 @property (nonatomic, strong) JHBrightnessSlider *slider;
 @property (nonatomic, strong) UIButton *switchButton;
 
-@property (nonatomic, strong) UIColor *selectedColor;
-@property (nonatomic, assign) BOOL switchIsOn;
+@property (nonatomic, strong) UIColor *selectedColor; // for scene function
+@property (nonatomic, assign) BOOL isSwitchOn;
 
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;

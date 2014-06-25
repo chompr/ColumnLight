@@ -69,7 +69,37 @@
 - (IBAction)tapSwitchButton:(id)sender
 {
 	NSLog(@"switch button is touched");
+	// If the button tapped is in connected services section
+	if (self.section == 0) {
+		// The switch state in each device should be same, so take the first one as the typical
+		JHLightService *firstService = [[[BTDiscovery sharedInstance] connectedServices] objectAtIndex:0];
+		if (firstService.isSwitchOn) {
+			for (JHLightService *service in [[BTDiscovery sharedInstance] connectedServices]) {
+				[service writePowerValue:NO];
+				NSLog(@"[JHDeviceTVCell] did write switch off");
+			}
+		} else {
+			for (JHLightService *service in [[BTDiscovery sharedInstance] connectedServices]) {
+				[service writePowerValue:YES];
+				NSLog(@"[JHDeviceTVCell] did write switch on");
+			}
+		}
+
+	}
+	if (self.section == 2) {
+		JHLightService *service = [[[BTDiscovery sharedInstance] connectedServices] objectAtIndex:self.row];
+		if (service.isSwitchOn) {
+			[service writePowerValue:NO];
+		} else {
+			[service writePowerValue:YES];
+		}
+		
+	}if (self.section == 3) {
+		NSLog(@"[JHDeviceTVCell] WARNING! the switch button in foundPeripherals section should be disabled!");
+	}
+	
 }
+
 
 - (void)showAnimatingAI
 {
@@ -96,6 +126,13 @@
 			[self turnOffSwitch];
 		} else {
 			self.switchButton.enabled = YES;
+			// Pick the first service as the typical one;
+			JHLightService *service = [services objectAtIndex:0];
+			if (service.isSwitchOn) {
+				[self turnOnSwitch];
+			} else {
+				[self turnOffSwitch];
+			}
 		}
 		
 	}
@@ -108,6 +145,7 @@
 			self.switchButton.enabled = NO;
 			[self hideAnimatingAI];
 			[self uncheckCheckBox];
+			// if device is in found peripheral list, the switch button should be disabled
 			[self turnOffSwitch];
 			
 		} else if (peripheral.state == CBPeripheralStateConnected) {
@@ -117,6 +155,7 @@
 			self.switchButton.enabled = YES;
 			[self hideAnimatingAI];
 			[self checkCheckBox];
+			// if device is in found peripheral list, the switch button should be disabled
 			[self turnOffSwitch];
 			
 		} else if (peripheral.state == CBPeripheralStateConnecting) {
@@ -125,20 +164,29 @@
 			self.switchButton.enabled = NO;
 			[self showAnimatingAI];
 			[self uncheckCheckBox];
+			// if device is in found peripheral list, the switch button should be disabled
 			[self turnOffSwitch];
 		}
 		
 	} else if (self.section == 2) {
-		CBPeripheral *peripheral = [[[[BTDiscovery sharedInstance] connectedServices] objectAtIndex:self.row] CLPeripheral];
+		JHLightService *service = [[[BTDiscovery sharedInstance] connectedServices] objectAtIndex:self.row];
+		CBPeripheral *peripheral = [service CLPeripheral];
+		
 		if (peripheral.state == CBPeripheralStateConnected) {
 			self.checkBox.enabled = YES;
 			self.checkBox.hidden = NO;
 			self.switchButton.enabled = YES;
 			[self hideAnimatingAI];
 			[self checkCheckBox];
-			[self turnOffSwitch];
+			
+			if (service.isSwitchOn) {
+				[self turnOnSwitch];
+			} else {
+				[self turnOffSwitch];
+			}
 			
 		} else if (peripheral.state == CBPeripheralStateDisconnected) {
+			// This case is also impossible to reach.
 			self.checkBox.enabled = YES;
 			self.checkBox.hidden = NO;
 			self.switchButton.enabled = NO;

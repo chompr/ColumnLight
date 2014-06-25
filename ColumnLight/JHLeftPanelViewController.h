@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BTDiscovery.h"
 @protocol JHLeftPanelViewDelegate <NSObject>
 
 @required
 - (void)movePanelToOriginalPosition;
+- (void)leftPanelVCDidLaunchScanning;
+- (void)leftPanelVCDidUpadteSelectedServices:(NSMutableArray *)selectedServices;
+
 
 @optional
 - (void)movePanelToOriginalPositionWithBounce;
@@ -20,8 +23,9 @@
 
 @interface JHLeftPanelViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isOnTheMainScreen;
 @property (nonatomic, assign) id<JHLeftPanelViewDelegate> delegate;
 
-@property (nonatomic, assign) NSUInteger selectedSection;
-@property (nonatomic, assign) NSUInteger selectedRow;
+//@property (nonatomic, assign) NSUInteger selectedSection;
+//@property (nonatomic, assign) NSUInteger selectedRow;
 @end

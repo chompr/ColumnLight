@@ -46,33 +46,20 @@
 
 #pragma mark - Settings -
 
-- (void)updateSelectedDeviceWithSection:(NSUInteger)section andRow:(NSUInteger)row
+- (void)updateSelectedServicesWithSection:(NSUInteger)section andRow:(NSUInteger)row
 {
-	switch (section) {
-		case 0:
-		{
-			// selected all devices
+	if (section == 0) {
+		if (self.connectedServices && [self.connectedServices count] > 0) {
 			self.selectedServices = self.connectedServices;
-			break;
 		}
-		case 1:
-		{
-			// selected group;
-			break;
-		}
-		case 2:
-		{
-			// selected a single device
+	} else if (section == 1) {
+		// for group selection
+	} else if (section == 2) {
+		if (self.connectedServices) {
 			self.selectedServices = [NSMutableArray arrayWithObject:[self.connectedServices objectAtIndex:row]];
-			break;
+		} else {
+			NSLog(@"[BTDiscovery] No services connected yet.");
 		}
-		case 3:
-		{	// invalid option here, should not go in case 3
-			break;
-		}
-			
-		default:
-			break;
 	}
 }
 - (void)loadSavedDevices
@@ -244,7 +231,7 @@
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HUDSearchingDevicesNotification object:nil]];
-	
+
 	NSLog(@"Did connect peripheral %@", [peripheral name]);
 	if ([peripheral.timer isValid]) {
 		NSLog(@"timer is valid? %i", [peripheral.timer isValid]);
@@ -256,6 +243,12 @@
 	JHLightService *service = [[JHLightService alloc] initWithPeripheral:peripheral andDelegate:self.peripheralDelegate];
 	[service start];
 	
+	if (!self.selectedServices) {
+		self.selectedServices = [NSMutableArray arrayWithObject:service];
+	} else {
+		NSLog(@"[BTDiscovery] selectedServices is not nil anymore");
+	}
+	
 	if (![self.connectedServices containsObject:service]) {
 		[self.connectedServices addObject:service];
 	}
@@ -265,6 +258,7 @@
 	[self addSavedDevice:peripheral.identifier];
 	
 	[self.discoveryDelegate discoveryDidRefresh];
+	//[self.discoveryDelegate discoveryDidConnectService:service];
 	// service did change states
 	
 }

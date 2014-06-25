@@ -41,8 +41,8 @@ extern NSString *kPowerCharacteristicUUIDString;
 
 - (void)lightServiceDidChangeStatus:(JHLightService *)service;
 
-- (void)lightServiceDidSwitchOnPower:(JHLightService *)service;
-- (void)lightServiceDidSwitchOffPower:(JHLightService *)service;
+//- (void)lightServiceDidSwitchOnPower:(JHLightService *)service;
+//- (void)lightServiceDidSwitchOffPower:(JHLightService *)service;
 
 @end
 
@@ -52,6 +52,7 @@ extern NSString *kPowerCharacteristicUUIDString;
 @interface JHLightService : NSObject
 
 @property (nonatomic, readonly) CBPeripheral *CLPeripheral;
+@property (readonly) BOOL isSwitchOn;
 
 - (id)initWithPeripheral:(CBPeripheral *)peripheral andDelegate:(id<JHLightServiceDelegate>)delegate;
 - (void)start;

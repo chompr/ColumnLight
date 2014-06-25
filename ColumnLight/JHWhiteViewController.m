@@ -39,7 +39,7 @@
 	
 	White *savedWhite = [self restoreSavedColor];
 	
-	self.slider = [[JHBrightnessSlider alloc] initWithFrame:CGRectMake(0, 0, 310, 80)
+	self.slider = [[JHBrightnessSlider alloc] initWithFrame:CGRectMake(0, 0, 300, 80)
 											  andBrightness:savedWhite.brightness];
 	
 	self.slider.filledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
@@ -49,7 +49,7 @@
 	
 	[self.view addSubview:self.slider];
 	
-	self.wheel = [[JHWhitePickerWheel alloc] initWithFrame:CGRectMake(0, 0, 310, 310)
+	self.wheel = [[JHWhitePickerWheel alloc] initWithFrame:CGRectMake(0, 0, 300, 300)
 											   andDelegate:self
 											  withSections:18
 												  andWhite:savedWhite];
@@ -71,23 +71,25 @@
 	[self.switchButton addSubview:bg];
 	[self.view addSubview:self.switchButton];
 	
+	[self.wheel switchOff];
+	
 }
 
 - (void)switchIsPushed
 {
-	if (!self.switchIsOn) {
-		self.switchIsOn = YES;
+	if (!self.isSwitchOn) {
+		self.isSwitchOn= YES;
 
 		[self.delegate didPushTheSwitchButton];
 	} else {
-		self.switchIsOn = NO;
+		self.isSwitchOn = NO;
 		
 		[self.delegate didPushTheSwitchButton];
 	}
 }
 - (void)updateSwitchBgImage
 {
-	if (self.switchIsOn) {
+	if (self.isSwitchOn) {
 		[[self.switchButton subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 		UIImageView *bg = [[UIImageView alloc] initWithFrame:self.switchButton.frame];
 		bg.image = [UIImage imageNamed:@"switchOn.png"];

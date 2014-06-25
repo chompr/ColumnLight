@@ -17,6 +17,7 @@
 @protocol BTDiscoveryDelegate <NSObject>
 
 - (void)discoveryDidRefresh;
+- (void)discoveryDidConnectService:(JHLightService *)service;
 - (void)discoveryStatePoweredOff;
 - (void)discoveryStatePoweredOn;
 
@@ -43,4 +44,6 @@
 - (void)connectPeripheral:(CBPeripheral *)peripheral;
 - (void)disconnectPeripheral:(CBPeripheral *)peripheral;
 
+
+- (void)updateSelectedServicesWithSection:(NSUInteger)section andRow:(NSUInteger)row;
 @end

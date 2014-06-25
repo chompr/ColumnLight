@@ -100,7 +100,7 @@ static float deltaAngle;
 	
 	// ----- Create sectors
 	for (int i = 0; i < self.numberOfSections; i++) {
-		JHFlowWheelSectorView *im = [[JHFlowWheelSectorView alloc] initWithFrame:CGRectMake(0, 0, 150, 14)];
+		JHFlowWheelSectorView *im = [[JHFlowWheelSectorView alloc] initWithFrame:CGRectMake(0, 0, 148, 14)];
 		
 		im.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
 		im.layer.position = CGPointMake(self.container.bounds.size.width/2.0 - self.container.frame.origin.x,
@@ -324,7 +324,7 @@ static float deltaAngle;
 		self.aPath = [UIBezierPath bezierPath];
 		
 		[self.aPath moveToPoint:CGPointMake(0.0, 0.0)];
-		[self.aPath addLineToPoint:CGPointMake(150, 7)];
+		[self.aPath addLineToPoint:CGPointMake(149, 7)];
 		[self.aPath addLineToPoint:CGPointMake(0.0, 14)];
     }
     return self;

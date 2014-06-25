@@ -11,4 +11,5 @@
 @interface CBPeripheral (Timer)
 
 @property (nonatomic, strong) NSTimer *timer;
+
 @end

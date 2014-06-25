@@ -35,7 +35,7 @@
 
 @property (nonatomic, strong) UIColor *selectedColor;
 
-@property (nonatomic, assign) BOOL switchIsOn;
+@property (nonatomic, assign) BOOL isSwitchOn;
 
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;

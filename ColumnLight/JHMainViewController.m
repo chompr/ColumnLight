@@ -38,7 +38,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 #define PANEL_WIDTH 60
 //#define SLIDE_TIMING .30
 
-@interface JHMainViewController () <JHColorViewControllerDelegate, JHWhiteViewControllerDelegate, JHTimerViewControllerDelegate, UIGestureRecognizerDelegate, JHLeftPanelViewDelegate, JHLightServiceDelegate>
+@interface JHMainViewController () <JHColorViewControllerDelegate, JHWhiteViewControllerDelegate, JHTimerViewControllerDelegate, UIGestureRecognizerDelegate, JHLeftPanelViewDelegate>
 
 @property (nonatomic, strong) JHColorViewController *colorVC;
 @property (nonatomic, strong) JHWhiteViewController *whiteVC;
@@ -56,7 +56,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 @property (nonatomic, assign) BOOL isShowingRightPanel;
 @property (nonatomic, assign) BOOL isShowingMainPanel;
 
-@property (nonatomic, assign) BOOL switchIsOn;
+@property (nonatomic, assign) BOOL isSwitchOn;
 
 //@property (nonatomic, strong) NSMutableArray *connectedServices;
 //@property (nonatomic, strong) NSMutableArray *foundPeripherals;
@@ -173,7 +173,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	[self.leftPanelVC didMoveToParentViewController:self];
 	self.leftPanelVC.delegate = self;
 	self.leftPanelVC.view.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height - 20);
-	[[BTDiscovery sharedInstance] setPeripheralDelegate:self];
+
 	
 	//******************************* Right ViewControllers **************************************
 	self.rightPanelVC = [storyBoard instantiateViewControllerWithIdentifier:@"RightPanelViewController"];
@@ -182,12 +182,17 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	self.rightPanelVC.context = self.context;
 	NSLog(@"selected tab %lu", (unsigned long)self.MainTBC.selectedIndex);
 	[self addChildViewController:self.rightPanelVC];
-	
 	[self.rightPanelVC didMoveToParentViewController:self];
 	self.rightPanelVC.view.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height - 20);
 	
+	self.isSwitchOn = NO;
+	self.colorVC.isSwitchOn = NO;
+	self.whiteVC.isSwitchOn = NO;
+	
+	[self switchComponentOff];
+	
 	[self setupGestureRecognizers];
-	[[JHLoadingHUD sharedInstance] showLoadingHUDInView:self.view];
+
 	
 }
 
@@ -238,6 +243,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	}*/
 	
 	[self.view addSubview:self.leftPanelVC.view];
+	self.leftPanelVC.isOnTheMainScreen = YES;
 	self.isShowingLeftPanel = YES;
 	[self showViewWithShadow:YES withOffset:-2];
 	// ? mark here
@@ -278,6 +284,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 
 	
 	[self.view addSubview:self.rightPanelVC.view];
+	self.rightPanelVC.isOnTheMainScreen = YES;
 	self.isShowingRightPanel = YES;
 	[self showViewWithShadow:YES withOffset:-2];
 	// ? mark here
@@ -305,6 +312,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	}
 	[self showViewWithShadow:NO withOffset:0];
 }
+
 - (void)showViewWithShadow:(BOOL)value withOffset:(double)offset
 {
 	if (value) {
@@ -323,35 +331,53 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 		//[self.MainTBC.view.layer setShadowOffset:CGSizeMake(offset, offset)];
 	}
 }
-#pragma mark - Center Controllers Delegate Methods -
 
-- (void)didPushTheSwitchButton
+#pragma mark - LeftPanelVC Delegtate -
+- (void)leftPanelVCDidLaunchScanning
 {
-	NSUInteger index = self.MainTBC.selectedIndex;
-	if (index == 0) {
-		self.switchIsOn = self.colorVC.switchIsOn;
-		self.whiteVC.switchIsOn = self.colorVC.switchIsOn;
-	} else if (index == 1) {
-		self.switchIsOn = self.whiteVC.switchIsOn;
-		self.colorVC.switchIsOn = self.whiteVC.switchIsOn;
-	} else if (index == 2) {
-#warning add timer vc support later write power on/off state from here
-		// for timer VC
+	[[JHLoadingHUD sharedInstance] showLoadingHUDInView:self.view];
+}
+- (void)leftPanelVCDidUpadteSelectedServices:(NSMutableArray *)selectedServices
+{
+	// update UI state here;
+	if (!selectedServices || [selectedServices count] == 0) {
+		NSLog(@"[JHMainVC] No valid selectedService passed or count is 0.");
+		self.isSwitchOn = NO;
+		self.colorVC.isSwitchOn = self.isSwitchOn;
+		self.whiteVC.isSwitchOn = self.isSwitchOn;
+		if (self.isSwitchOn) {
+			[self switchComponentOn];
+		} else {
+			[self switchComponentOff];
+		}
+		return;
 	}
-	if (self.switchIsOn) {
+	JHLightService *firstService = [selectedServices objectAtIndex:0];
+	BOOL state = firstService.isSwitchOn;
+	NSLog(@"[JHMainVC] isSwitchOn ? %i", state);
+	
+	for (JHLightService *service in selectedServices) {
+		if (service.isSwitchOn != state) {
+			NSLog(@"[JHMainVC] Detect different device state in selectedService");
+			return;
+		}
+	}
+	self.isSwitchOn = state;
+	self.colorVC.isSwitchOn = self.isSwitchOn;
+	self.whiteVC.isSwitchOn = self.isSwitchOn;
+	if (self.isSwitchOn) {
 		[self switchComponentOn];
 	} else {
 		[self switchComponentOff];
 	}
-	
 }
-#pragma mark - Service Delegate Methods -
+/*
 - (void)lightServiceDidSwitchOnPower:(JHLightService *)service
 {
-	self.switchIsOn = YES;
-	self.colorVC.switchIsOn = self.switchIsOn;
-	self.whiteVC.switchIsOn = self.switchIsOn;
-	if (self.switchIsOn) {
+	self.isSwitchOn = YES;
+	self.colorVC.isSwitchOn = self.isSwitchOn;
+	self.whiteVC.isSwitchOn = self.isSwitchOn;
+	if (self.isSwitchOn) {
 		[self switchComponentOn];
 	} else {
 		[self switchComponentOff];
@@ -359,16 +385,16 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 }
 - (void)lightServiceDidSwitchOffPower:(JHLightService *)service
 {
-	self.switchIsOn = NO;
-	self.colorVC.switchIsOn = self.switchIsOn;
-	self.whiteVC.switchIsOn = self.switchIsOn;
-	if (self.switchIsOn) {
+	self.isSwitchOn = NO;
+	self.colorVC.isSwitchOn = self.isSwitchOn;
+	self.whiteVC.isSwitchOn = self.isSwitchOn;
+	if (self.isSwitchOn) {
 		[self switchComponentOn];
 	} else {
 		[self switchComponentOff];
 	}
 }
-
+*/
 - (void)switchComponentOn
 {
 	self.colorVC.wheel.userInteractionEnabled = YES;
@@ -381,6 +407,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	[self.whiteVC.wheel switchOn];
 	[self.whiteVC updateSwitchBgImage];
 }
+
 - (void)switchComponentOff
 {
 	self.colorVC.wheel.userInteractionEnabled = NO;
@@ -392,6 +419,29 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	self.whiteVC.slider.userInteractionEnabled = NO;
 	[self.whiteVC.wheel switchOff];
 	[self.whiteVC updateSwitchBgImage];
+}
+
+#pragma mark - Center Controllers Delegate Methods -
+
+- (void)didPushTheSwitchButton
+{
+	NSUInteger index = self.MainTBC.selectedIndex;
+	if (index == 0) {
+		self.isSwitchOn = self.colorVC.isSwitchOn;
+		self.whiteVC.isSwitchOn = self.colorVC.isSwitchOn;
+	} else if (index == 1) {
+		self.isSwitchOn = self.whiteVC.isSwitchOn;
+		self.colorVC.isSwitchOn = self.whiteVC.isSwitchOn;
+	} else if (index == 2) {
+#warning add timer vc support later write power on/off state from here
+		// for timer VC
+	}
+	if (self.isSwitchOn) {
+		[self switchComponentOn];
+	} else {
+		[self switchComponentOff];
+	}
+	
 }
 - (void)movePanelLeft
 {
@@ -410,7 +460,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 							 self.colorVC.rightButton.tag = 0; // 0 means the panel is showing. 1 means the panel isn't shown
 							 self.whiteVC.rightButton.tag = 0;
 							 self.timerVC.rightButton.tag = 0;
-							 //self.MainTBC.tabBar.userInteractionEnabled = NO;
+							 self.MainTBC.tabBar.userInteractionEnabled = NO;
 							 self.colorVC.wheel.userInteractionEnabled = NO;
 							 self.colorVC.slider.userInteractionEnabled = NO;
 							 self.whiteVC.wheel.userInteractionEnabled = NO;
@@ -458,10 +508,18 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 					 completion:^(BOOL finished) {
 						 if (finished) {
 							 self.MainTBC.tabBar.userInteractionEnabled = YES;
-							 self.colorVC.wheel.userInteractionEnabled = YES;
-							 self.colorVC.slider.userInteractionEnabled = YES;
-							 self.whiteVC.wheel.userInteractionEnabled = YES;
-							 self.whiteVC.slider.userInteractionEnabled = YES;
+							 if (self.isSwitchOn) {
+								 self.colorVC.wheel.userInteractionEnabled = YES;
+								 self.colorVC.slider.userInteractionEnabled = YES;
+								 self.whiteVC.wheel.userInteractionEnabled = YES;
+								 self.whiteVC.slider.userInteractionEnabled = YES;
+							 } else {
+								 self.colorVC.wheel.userInteractionEnabled = NO;
+								 self.colorVC.slider.userInteractionEnabled = NO;
+								 self.whiteVC.wheel.userInteractionEnabled = NO;
+								 self.whiteVC.slider.userInteractionEnabled = NO;
+							 }
+
 							 [self resetMainView];
 						 }
 					 }];

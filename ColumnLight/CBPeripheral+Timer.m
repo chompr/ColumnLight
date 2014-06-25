@@ -22,4 +22,5 @@ static char const * const kJHConnectingTimerKey = "kJHConnectingTimerKey";
 {
 	return objc_getAssociatedObject(self, kJHConnectingTimerKey);
 }
+
 @end

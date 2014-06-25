@@ -87,6 +87,7 @@
 						 if (finished) {
 							 [[NSNotificationCenter defaultCenter] removeObserver:self];
 							 [self removeFromSuperview];
+							 self.transform = CGAffineTransformScale(self.transform, 1/0.8, 1/0.8);
 						 }
 					 }];
 }

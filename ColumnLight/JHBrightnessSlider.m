@@ -31,7 +31,7 @@
 	CGContextMoveToPoint(context, self.barOffset, self.frame.size.height/2);
 	CGContextAddLineToPoint(context, self.frame.size.width - self.barOffset, self.frame.size.height/2);
 	[self.unfilledColor setStroke];
-	CGContextSetLineWidth(context, 15);
+	CGContextSetLineWidth(context, 20);
 	CGContextSetLineCap(context, kCGLineCapRound);
 	CGContextDrawPath(context, kCGPathStroke);
 	
@@ -39,7 +39,7 @@
 	CGContextMoveToPoint(context, self.barOffset, self.frame.size.height/2);
 	CGContextAddLineToPoint(context, self.currentValue, self.frame.size.height/2);
 	[self.filledColor setStroke];
-	CGContextSetLineWidth(context, 15);
+	CGContextSetLineWidth(context, 20);
 	CGContextSetLineCap(context, kCGLineCapRound);
 	CGContextDrawPath(context, kCGPathStroke);
 	
@@ -90,7 +90,7 @@
 		self.currentValue = self.frame.size.width - self.barOffset;
 	}
 	CGFloat brightness = [self calculateBrightness];
-	//NSLog(@"moving");
+	//NSLog(@"brightness : %f", brightness);
 	[self setNeedsDisplay];
 	[self.delegate sliderContinueChangingBrightness:brightness];
 	

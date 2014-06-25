@@ -8,14 +8,14 @@
 
 #import "JHLeftPanelViewController.h"
 #import "JHDeviceTableViewCell.h"
-#import "BTDiscovery.h"
-#import "JHLightService.h"
+#import "JHLoadingHUD.h"
 
-@interface JHLeftPanelViewController () <UITableViewDataSource, UITableViewDelegate, BTDiscoveryDelegate>
+
+@interface JHLeftPanelViewController () <UITableViewDataSource, UITableViewDelegate, BTDiscoveryDelegate, JHLightServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *deviceTableView;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
-
+//@property (nonatomic, strong) NSMutableArray *selectedServices;
 
 @end
 
@@ -43,7 +43,7 @@
 - (void)initBTDiscovery
 {
 	[[BTDiscovery sharedInstance] setDiscoveryDelegate:self];
-	//[[BTDiscovery sharedInstance] setPeripheralDelegate:self];
+	[[BTDiscovery sharedInstance] setPeripheralDelegate:self];
 	//[self launchScanning];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -59,6 +59,7 @@
 - (void)launchScanning
 {
 	[[BTDiscovery sharedInstance] startScanningForUUIDString:@"fff0"];
+	[self.delegate leftPanelVCDidLaunchScanning];
 	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(stopScaning) userInfo:nil repeats:NO];
 }
 
@@ -66,6 +67,7 @@
 {
 	[[BTDiscovery sharedInstance] stopScanning];
 	self.refreshButton.enabled = YES;
+	//[self.delegate leftPanelDidUpadteSelectedServices:self.selectedServices];
 	
 }
 
@@ -79,22 +81,35 @@
 	
 }
 
+
+
 #pragma mark - LightService Delegate -
 
 - (void)lightServiceDidChangeStatus:(JHLightService *)service
 {
-	
+	if ([[BTDiscovery sharedInstance] selectedServices]) {
+		NSMutableArray *serviceList = [[BTDiscovery sharedInstance] selectedServices];
+		[self.delegate leftPanelVCDidUpadteSelectedServices:serviceList];
+	}
+	[self.deviceTableView reloadData];
 }
 
 #pragma mark - BTDiscovery Delegate -
 
-- (void)discoveryStatePoweredOn
+- (void)discoveryDidConnectService:(JHLightService *)service
 {
-	[self launchScanning];
+	if ([[BTDiscovery sharedInstance] selectedServices]) {
+		NSMutableArray *serviceList = [[BTDiscovery sharedInstance] selectedServices];
+		//[self.delegate leftPanelVCDidUpadteSelectedServices:serviceList];
+	}
 }
 - (void)discoveryDidRefresh
 {
 	[self.deviceTableView reloadData];
+}
+- (void)discoveryStatePoweredOn
+{
+	[self launchScanning];
 }
 
 - (void)discoveryStatePoweredOff
@@ -176,11 +191,59 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	self.selectedSection = indexPath.section;
-	self.selectedRow = indexPath .row;
-	[self.delegate movePanelToOriginalPositionWithBounce];
+	//self.selectedSection = indexPath.section;
+	//self.selectedRow = indexPath .row;
 	
 	NSLog(@"table view did selected row at indexpath");
+	NSInteger section = indexPath.section;
+	NSInteger row = indexPath.row;
+	[[BTDiscovery sharedInstance] updateSelectedServicesWithSection:section andRow:row];
+	if (section == 0) {
+		// all connected services are selected;
+		if ([[BTDiscovery sharedInstance] selectedServices]) {
+			NSMutableArray *serviceList = [[BTDiscovery sharedInstance] selectedServices];
+			
+			//Take the first object as the typical
+			JHLightService *firstService = [serviceList objectAtIndex:0];
+			BOOL state = firstService.isSwitchOn;
+			BOOL isIdentical = YES;
+			for (JHLightService *service in serviceList) {
+				if (service.isSwitchOn != state) {
+					NSLog(@"[JHLeftPanelVC] Device state in selectedServices are different, going to turn all on");
+					isIdentical = NO;
+					break;
+				}
+			}
+			if (!isIdentical) {
+				for (JHLightService *service in serviceList) {
+					[service writePowerValue:YES];
+				}
+			}
+			
+			[self.delegate movePanelToOriginalPositionWithBounce];
+			[self.delegate leftPanelVCDidUpadteSelectedServices:serviceList];
+			
+		} else {
+			NSLog(@"[JHLeftPanelVC] No services connected yet.");
+		}
+	} else if (section == 1) {
+		
+		// for group selection;
+		
+	} else if (section == 2) {
+		if ([[BTDiscovery sharedInstance] selectedServices]) {
+			
+			NSMutableArray *serviceList = [[BTDiscovery sharedInstance] selectedServices];
+			
+			
+			[self.delegate movePanelToOriginalPositionWithBounce];
+			[self.delegate leftPanelVCDidUpadteSelectedServices:serviceList];
+		} else {
+			NSLog(@"[JHLeftPanelVC] No services connected yet.");
+		}
+	} else {
+		NSLog(@"[JHLeftPanelVC] Section[%li] not a valid section.", (long)section);
+	}
 }
 
 
@@ -197,6 +260,7 @@
 	
 	return nil;
 }
+
 #pragma mark - IBActions -
 - (IBAction)refreshDeviceList:(id)sender
 {

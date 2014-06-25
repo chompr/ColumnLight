@@ -40,7 +40,7 @@
 	
 	
 	
-	self.slider = [[JHBrightnessSlider alloc] initWithFrame:CGRectMake(0, 0, 310, 80)
+	self.slider = [[JHBrightnessSlider alloc] initWithFrame:CGRectMake(0, 0, 300, 80)
 											  andBrightness:savedColor.brightness];
 	
 	self.slider.filledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
@@ -48,7 +48,7 @@
 	self.slider.center = CGPointMake(160, 440);
 	[self.view addSubview:self.slider];
 	
-	self.wheel = [[JHFlowWheel alloc] initWithFrame:CGRectMake(0, 0, 310, 310)
+	self.wheel = [[JHFlowWheel alloc] initWithFrame:CGRectMake(0, 0, 300, 300)
 										andDelegate:self
 									   withSections:72
 										   andColor:savedColor];
@@ -62,32 +62,34 @@
 	self.switchButton.center = CGPointMake(160, 230);
 	self.switchButton.backgroundColor = [UIColor clearColor];
 	self.switchButton.tag = 0;
-	[self.switchButton addTarget:self action:@selector(switchIsPushed) forControlEvents:UIControlEventTouchUpInside];
+	[self.switchButton addTarget:self action:@selector(isSwitchPushed) forControlEvents:UIControlEventTouchUpInside];
 	
 	UIImageView *bg = [[UIImageView alloc] initWithFrame:self.switchButton.frame];
 	bg.image = [UIImage imageNamed:@"switchOff.png"];
 	bg.center = CGPointMake(self.switchButton.frame.size.width/2, self.switchButton.frame.size.height/2);
 	[self.switchButton addSubview:bg];
 	[self.view addSubview:self.switchButton];
+	
+	[self.wheel switchOff];
 
 	
 }
 
-- (void)switchIsPushed
+- (void)isSwitchPushed
 {
-	if (!self.switchIsOn) {
-		self.switchIsOn = YES;
+	if (!self.isSwitchOn) {
+		self.isSwitchOn = YES;
 		
 		[self.delegate didPushTheSwitchButton];
 	} else {
-		self.switchIsOn = NO;
+		self.isSwitchOn = NO;
 		
 		[self.delegate didPushTheSwitchButton];
 	}
 }
 - (void)updateSwitchBgImage
 {
-	if (self.switchIsOn) {
+	if (self.isSwitchOn) {
 		[[self.switchButton subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 		UIImageView *bg = [[UIImageView alloc] initWithFrame:self.switchButton.frame];
 		bg.image = [UIImage imageNamed:@"switchOn.png"];
@@ -163,7 +165,7 @@
 	int whiteInt = brightness * 255;
 	NSLog(@"Colors are about to write: R%i, G%i, B%i, W%i", redInt, greenInt, blueInt, whiteInt);
 	
-	for (JHLightService *service in [[BTDiscovery sharedInstance] connectedServices]) {
+	for (JHLightService *service in [[BTDiscovery sharedInstance] selectedServices]) {
 		[service writeRedValue:redInt];
 		[service writeGreenValue:greenInt];
 		[service writeBlueValue:blueInt];

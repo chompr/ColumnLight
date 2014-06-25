@@ -44,6 +44,7 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 @property (nonatomic, strong) CBUUID *powerUUID;
 */
 
+@property (nonatomic, assign) BOOL isSwitchOn;
 @end
 
 @implementation JHLightService
@@ -269,8 +270,8 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 		return;
 	}
 	
-	if (!self.redCharacteristic) {
-		NSLog(@"No valid RED characteristic");
+	if (!self.powerCharacteristic) {
+		NSLog(@"No valid power characteristic");
 		return;
 	}
 	
@@ -299,10 +300,12 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 		NSLog(@"Power state: 0x%x", value);
 		if (value & 0x01) {
 			NSLog(@"Switch is on");
-			[self.delegate lightServiceDidSwitchOnPower:self];
+			self.isSwitchOn = YES;
+			[self.delegate lightServiceDidChangeStatus:self];
 		} else {
 			NSLog(@"Switch is off");
-			[self.delegate lightServiceDidSwitchOffPower:self];
+			self.isSwitchOn = NO;
+			[self.delegate lightServiceDidChangeStatus:self];
 		}
 	}
 }
