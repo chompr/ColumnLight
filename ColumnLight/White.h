@@ -2,7 +2,7 @@
 //  White.h
 //  ColumnLight
 //
-//  Created by Alan on 6/3/14.
+//  Created by Alan on 7/9/14.
 //  Copyright (c) 2014 Alan Jiong Huang. All rights reserved.
 //
 

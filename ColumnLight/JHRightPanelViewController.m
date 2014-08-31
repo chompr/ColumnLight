@@ -10,6 +10,7 @@
 #import "JHSceneTableViewCell.h"
 #import "Scene.h"
 #import "JHAddNewSceneViewController.h"
+#import "BTDiscovery.h"
 
 @interface JHRightPanelViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
@@ -70,7 +71,7 @@
 	}
 }
 
--(void) onLoadTable
+- (void)onLoadTable
 {
     [self.sceneTableView reloadData];
 }
@@ -134,10 +135,7 @@
 }
 
 
-
-
-
-#pragma mark - UITableViewDataSource
+#pragma mark - UITableViewDelegate -
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -146,6 +144,24 @@
 	}
 	return UITableViewCellEditingStyleNone;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	Scene *scene = [self.FRC objectAtIndexPath:indexPath];
+	uint8_t red = scene.red * 255;
+	uint8_t	green = scene.green * 255;
+	uint8_t blue = scene.blue * 255;
+	uint8_t white = scene.brightness * 255;
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	for (JHLightService *service in [[BTDiscovery sharedInstance] connectedServices]) {
+		[service writeColorValueWithRed:red green:green blue:blue white:white];
+	}
+}
+
+#pragma mark - UITableViewDataSource -
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 	NSInteger sections = [[self.FRC sections] count];
@@ -177,6 +193,8 @@
 	[tableView registerNib:nib forCellReuseIdentifier:cellIdentifier];
 	
 	JHSceneTableViewCell *cell = [self.sceneTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	//cell.backgroundColor = [UIColor colorWithRed:42/255.f green:43/255.f blue:48/255.f alpha:1];
+	//cell.nameLabel.textColor = [UIColor whiteColor];
 	
 	Scene *scene = [self.FRC objectAtIndexPath:indexPath];
 	
@@ -224,10 +242,7 @@
 	
 	return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	[self.sceneTableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {

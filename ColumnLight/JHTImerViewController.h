@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JHTimerWheel.h"
+#import <CoreData/CoreData.h>
+
+#import "JHSegmentedControl.h"
+#import "JHAlarmSetting.h"
+
+//#import "JHTimerWheel.h"
+
 @protocol JHTimerViewControllerDelegate <NSObject>
 
 @optional
@@ -20,11 +26,17 @@
 
 @end
 
-@interface JHTImerViewController : UIViewController
+@interface JHTimerViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, assign) id<JHTimerViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
+
+@property (nonatomic, assign) BOOL debug;
+
+@property (nonatomic, strong) JHAlarmSetting *sleepAlarmSetting;
+@property (nonatomic, strong) JHAlarmSetting *wakeAlarmSetting;
+@property (nonatomic, strong) JHSegmentedControl *alarmTypeSC;
 
 @end

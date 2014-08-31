@@ -8,6 +8,8 @@
 
 
 #import "JHColorViewController.h"
+
+
 #import "JHNotificationName.h"
 #import "Color+Create.h"
 #import "BTDiscovery.h"
@@ -29,9 +31,32 @@
 												  }];
 }
 
+- (void)viewDidLoad
+{
+	UIImage *bgPattern = [UIImage imageNamed:@"bgPattern.png"];
+	self.view.backgroundColor = [UIColor colorWithPatternImage:bgPattern];
+	
+	self.leftButton.backgroundColor = [UIColor clearColor];
+	self.rightButton.backgroundColor = [UIColor clearColor];
+	
+	[self.leftButton setBackgroundImage:[UIImage imageNamed:@"leftButtonIcon.png"] forState:UIControlStateNormal];
+	[self.rightButton setBackgroundImage:[UIImage imageNamed:@"rightButtonIcon.png"] forState:UIControlStateNormal];
+	/*
+	UIImageView *leftButtonIcon = [[UIImageView alloc] initWithFrame:self.leftButton.frame];
+	leftButtonIcon.image = [UIImage imageNamed:@"leftButtonIcon.png"];
+	leftButtonIcon.center = CGPointMake(self.leftButton.frame.size.width/2, self.leftButton.frame.size.height/2);
+	[self.leftButton addSubview:leftButtonIcon];
+	
+	UIImageView *rightButtonIcon = [[UIImageView alloc] initWithFrame:self.rightButton.frame];
+	rightButtonIcon.image = [UIImage imageNamed:@"rightButtonIcon.png"];
+	rightButtonIcon.center = CGPointMake(self.rightButton.frame.size.width/2, self.rightButton.frame.size.height/2);
+	[self.rightButton addSubview:rightButtonIcon];
+	*/
+	
+}
 - (void)setComponents
 {
-	self.view.backgroundColor = [UIColor colorWithRed:247/255.f green:249/255.f blue:255/255.f alpha:1];
+	//self.view.backgroundColor = [UIColor colorWithRed:247/255.f green:249/255.f blue:255/255.f alpha:1];
 	self.sectorLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 120, 30)];
 	self.sectorLabel.textAlignment = NSTextAlignmentCenter;
 	[self.view addSubview:self.sectorLabel];
@@ -43,8 +68,8 @@
 	self.slider = [[JHBrightnessSlider alloc] initWithFrame:CGRectMake(0, 0, 300, 80)
 											  andBrightness:savedColor.brightness];
 	
-	self.slider.filledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
-	self.slider.unfilledColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+	self.slider.filledColor = [UIColor colorWithRed:247/255.f green:189/255.f blue:115/255.f alpha:1];
+	self.slider.unfilledColor = [UIColor colorWithRed:177/255.f green:177/255.f blue:177/255.f alpha:1];
 	self.slider.center = CGPointMake(160, 440);
 	[self.view addSubview:self.slider];
 	
@@ -58,7 +83,8 @@
 	self.slider.delegate = self.wheel;
 	[self.view addSubview:self.wheel];
 	
-	self.switchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+	self.switchButton = [[JHRoundButton alloc] initWithFrame:CGRectMake(0, 0, 120, 120)];
+	
 	self.switchButton.center = CGPointMake(160, 230);
 	self.switchButton.backgroundColor = [UIColor clearColor];
 	self.switchButton.tag = 0;
@@ -164,12 +190,10 @@
 	int blueInt = blue * 255;
 	int whiteInt = brightness * 255;
 	NSLog(@"Colors are about to write: R%i, G%i, B%i, W%i", redInt, greenInt, blueInt, whiteInt);
+#warning need to fix connectedService to selectedService here
 	
-	for (JHLightService *service in [[BTDiscovery sharedInstance] selectedServices]) {
-		[service writeRedValue:redInt];
-		[service writeGreenValue:greenInt];
-		[service writeBlueValue:blueInt];
-		[service writeWhiteValue:whiteInt];
+	for (JHLightService *service in [[BTDiscovery sharedInstance] connectedServices]) {
+		[service writeColorValueWithRed:redInt green:greenInt blue:blueInt white:whiteInt];
 	}
 }
 

@@ -11,11 +11,14 @@
 
 #define COLOR_SERVICE_UUID [CBUUID UUIDWithString:@"fff0"]
 
-#define RED_CHAR_UUID      [CBUUID UUIDWithString:@"fff1"]
-#define GREEN_CHAR_UUID    [CBUUID UUIDWithString:@"fff2"]
-#define BLUE_CHAR_UUID     [CBUUID UUIDWithString:@"fff3"]
-#define WHITE_CHAR_UUID    [CBUUID UUIDWithString:@"fff4"]
-#define POWER_CHAR_UUID    [CBUUID UUIDWithString:@"fff5"]
+#define COLOR_CHAR_UUID [CBUUID UUIDWithString:@"fff5"]
+#define POWER_CHAR_UUID    [CBUUID UUIDWithString:@"fff4"]
+
+//#define RED_CHAR_UUID      [CBUUID UUIDWithString:@"fff1"]
+//#define GREEN_CHAR_UUID    [CBUUID UUIDWithString:@"fff2"]
+//#define BLUE_CHAR_UUID     [CBUUID UUIDWithString:@"fff3"]
+//#define WHITE_CHAR_UUID    [CBUUID UUIDWithString:@"fff4"]
+
 
 /*
 extern NSString *kColorServiceUUIDString;
@@ -59,11 +62,12 @@ extern NSString *kPowerCharacteristicUUIDString;
 - (void)reset;
 
 
-- (void)writeRedValue:(int)red;
-- (void)writeGreenValue:(int)green;
-- (void)writeBlueValue:(int)blue;
-- (void)writeWhiteValue:(int)white;
-- (void)writePowerValue:(BOOL)power;
+//- (void)writeRedValue:(int)red;
+//- (void)writeGreenValue:(int)green;
+//- (void)writeBlueValue:(int)blue;
+//- (void)writeWhiteValue:(int)white;
 
+- (void)writeColorValueWithRed:(int)red green:(int)green blue:(int)blue white:(int)white;
+- (void)writePowerValue:(BOOL)power;
 
 @end

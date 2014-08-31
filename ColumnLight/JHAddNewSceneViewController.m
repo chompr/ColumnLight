@@ -17,6 +17,7 @@
 
 @implementation JHAddNewSceneViewController
 
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -44,14 +45,14 @@
 		if (self.context) {
 			NSString *name = self.sceneNameTextField.text;
 			self.aNewScene = [Scene sceneWithName:name inManagedObjectContext:self.context];
-			self.aNewScene.isSelected = NO;
+			//self.aNewScene.isSelected = NO;
 			
 			CGFloat red, green, blue, alpha;
 			[self.selectedColor getRed:&red green:&green blue:&blue alpha:&alpha];
 			self.aNewScene.red = red;
 			self.aNewScene.green = green;
 			self.aNewScene.blue = blue;
-			self.aNewScene.alpha = alpha;
+			self.aNewScene.brightness = alpha;
 			
 
 			

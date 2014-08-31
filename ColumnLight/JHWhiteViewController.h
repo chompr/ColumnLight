@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JHWhitePickerWheel.h"
-
+#import "JHRoundButton.h"
 @protocol JHWhiteViewControllerDelegate <NSObject>
 
 @optional
@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong) JHWhitePickerWheel *wheel;
 @property (nonatomic, strong) JHBrightnessSlider *slider;
-@property (nonatomic, strong) UIButton *switchButton;
+@property (nonatomic, strong) JHRoundButton *switchButton;
 
 @property (nonatomic, strong) UIColor *selectedColor;
 

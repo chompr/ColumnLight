@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JHFlowWheel.h"
+#import "JHRoundButton.h"
 
 @protocol JHColorViewControllerDelegate <NSObject>
 
@@ -30,7 +31,7 @@
 // UI Components
 @property (nonatomic, strong) JHFlowWheel *wheel;
 @property (nonatomic, strong) JHBrightnessSlider *slider;
-@property (nonatomic, strong) UIButton *switchButton;
+@property (nonatomic, strong) JHRoundButton *switchButton;
 
 @property (nonatomic, strong) UIColor *selectedColor; // for scene function
 @property (nonatomic, assign) BOOL isSwitchOn;

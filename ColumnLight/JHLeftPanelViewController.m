@@ -16,7 +16,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *deviceTableView;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 //@property (nonatomic, strong) NSMutableArray *selectedServices;
+@property (weak, nonatomic) IBOutlet UIButton *settingButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @end
 
 @implementation JHLeftPanelViewController
@@ -28,12 +32,26 @@
 	//self.foundPeripherals = [NSMutableArray arrayWithObjects:@"found1", @"found2", nil];
 	
     [super viewDidLoad];
+	self.view.backgroundColor = [UIColor colorWithRed:49/255.f green:52/255.f blue:59/255.f alpha:1];
+	self.deviceTableView.backgroundColor = [UIColor colorWithRed:42/255.f green:43/255.f blue:48/255.f alpha:1];
+	
+	self.refreshButton.backgroundColor = [UIColor clearColor];
+	self.settingButton.backgroundColor = [UIColor clearColor];
+	self.addButton.backgroundColor = [UIColor clearColor];
+	self.editButton.backgroundColor = [UIColor clearColor];
+	
+	[self.settingButton setBackgroundImage:[UIImage imageNamed:@"settingButtonIcon.png"] forState:UIControlStateNormal];
+	[self.refreshButton setBackgroundImage:[UIImage imageNamed:@"refreshButtonIcon.png"] forState:UIControlStateNormal];
+	[self.addButton setBackgroundImage:[UIImage imageNamed:@"addButtonIcon.png"] forState:UIControlStateNormal];
+	[self.editButton setBackgroundImage:[UIImage imageNamed:@"editButtonIcon.png"] forState:UIControlStateNormal];
 	
 	self.deviceTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 	[self.deviceTableView setDelegate:self];
 	[self.deviceTableView setDataSource:self];
 	[self.deviceTableView reloadData];
+	
 	self.deviceTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	
 	[self initBTDiscovery];
 
 	
@@ -156,6 +174,8 @@
 	[tableView registerNib:nib forCellReuseIdentifier:cellIdentifier];
 	
 	JHDeviceTableViewCell *cell = [self.deviceTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	cell.backgroundColor = [UIColor colorWithRed:42/255.f green:43/255.f blue:48/255.f alpha:1];
+	cell.nameLabel.textColor = [UIColor whiteColor];
 	cell.nameLabel.enabled = NO;
 	cell.section = indexPath.section;
 	cell.row = indexPath.row;

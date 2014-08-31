@@ -21,8 +21,6 @@
 @property (nonatomic, assign) id<JHBrightnessSlidereDelegate> delegate;
 @property (nonatomic, strong) UIColor *unfilledColor;
 @property (nonatomic, strong) UIColor *filledColor;
-@property (nonatomic, assign) float minValue;
-@property (nonatomic, assign) float maxValue;
 @property (nonatomic, assign) float currentValue;
 @property (nonatomic, assign) double barOffset;
 

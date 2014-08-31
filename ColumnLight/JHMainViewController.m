@@ -11,7 +11,7 @@
 
 #import "JHColorViewController.h"
 #import "JHWhiteViewController.h"
-#import "JHTImerViewController.h"
+#import "JHTimerViewController.h"
 #import "JHLeftPanelViewController.h"
 #import "JHRightPanelViewController.h"
 
@@ -42,7 +42,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 
 @property (nonatomic, strong) JHColorViewController *colorVC;
 @property (nonatomic, strong) JHWhiteViewController *whiteVC;
-@property (nonatomic, strong) JHTImerViewController *timerVC;
+@property (nonatomic, strong) JHTimerViewController *timerVC;
 
 @property (nonatomic, strong) JHLeftPanelViewController *leftPanelVC;
 @property (nonatomic, strong) JHRightPanelViewController *rightPanelVC;
@@ -143,6 +143,7 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 	self.timerVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Alarm" image:nil tag:3];
 	
 	self.MainTBC.tabBar.barTintColor = [UIColor blackColor];
+	self.MainTBC.tabBar.tintColor = [UIColor whiteColor];
 	self.colorVC.view.tag = COLOR_VC_TAG;
 	self.colorVC.delegate = self;
 	
@@ -437,8 +438,14 @@ static const CGFloat kJHClosingAnimationSpringInitialVelocity = 0.5f;
 		// for timer VC
 	}
 	if (self.isSwitchOn) {
+		for (JHLightService *service in [[BTDiscovery sharedInstance] connectedServices]) {
+			[service writePowerValue:YES];
+		}
 		[self switchComponentOn];
 	} else {
+		for (JHLightService *service in [[BTDiscovery sharedInstance] connectedServices]) {
+			[service writePowerValue:NO];
+		}
 		[self switchComponentOff];
 	}
 	

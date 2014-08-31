@@ -10,8 +10,18 @@
 		E6175387193823AF00DB3575 /* JHBrightnessSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E6175386193823AF00DB3575 /* JHBrightnessSlider.m */; };
 		E617538A1938CEBA00DB3575 /* JHWhitePickerWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E61753891938CEBA00DB3575 /* JHWhitePickerWheel.m */; };
 		E61753901938E69700DB3575 /* JHFlowWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E617538F1938E69700DB3575 /* JHFlowWheel.m */; };
+		E6256A20196C3AB6009936D1 /* JHRoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6256A1F196C3AB6009936D1 /* JHRoundButton.m */; };
+		E6256A23196D611C009936D1 /* White.m in Sources */ = {isa = PBXBuildFile; fileRef = E6256A22196D611C009936D1 /* White.m */; };
+		E6256A26196D611C009936D1 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = E6256A25196D611C009936D1 /* Color.m */; };
+		E6256A29196D611C009936D1 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = E6256A28196D611C009936D1 /* Scene.m */; };
 		E62666A8193C588D002897D2 /* White+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E62666A7193C588D002897D2 /* White+Create.m */; };
 		E62666B5193DB9FB002897D2 /* Color+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E62666B4193DB9FB002897D2 /* Color+Create.m */; };
+		E646B73C199DDFB300EBA3D1 /* JHSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E646B73B199DDFB300EBA3D1 /* JHSegmentedControl.m */; };
+		E646B73F19A19D7C00EBA3D1 /* JHAlarmSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = E646B73E19A19D7C00EBA3D1 /* JHAlarmSetting.m */; };
+		E646B74219A48ACB00EBA3D1 /* JHAlarmBrightnessSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E646B74119A48ACB00EBA3D1 /* JHAlarmBrightnessSettingView.m */; };
+		E646B74819A792A100EBA3D1 /* JHAlarmTimeAdvanceSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E646B74719A792A100EBA3D1 /* JHAlarmTimeAdvanceSettingView.m */; };
+		E646B74B19A88C0900EBA3D1 /* JHAlarmSettingRepeatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E646B74A19A88C0900EBA3D1 /* JHAlarmSettingRepeatVC.m */; };
+		E646B74E19A88C3600EBA3D1 /* JHAlarmSettingColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E646B74D19A88C3600EBA3D1 /* JHAlarmSettingColorVC.m */; };
 		E6B0EE67193599CC005565B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE66193599CC005565B8 /* Foundation.framework */; };
 		E6B0EE69193599CC005565B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE68193599CC005565B8 /* CoreGraphics.framework */; };
 		E6B0EE6B193599CC005565B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EE6A193599CC005565B8 /* UIKit.framework */; };
@@ -30,7 +40,7 @@
 		E6B0EEAA1935A047005565B8 /* JHRightPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEA91935A047005565B8 /* JHRightPanelViewController.m */; };
 		E6B0EEAD1935A06A005565B8 /* JHColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEAC1935A06A005565B8 /* JHColorViewController.m */; };
 		E6B0EEB01935A081005565B8 /* JHWhiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEAF1935A081005565B8 /* JHWhiteViewController.m */; };
-		E6B0EEB31935A097005565B8 /* JHTImerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEB21935A097005565B8 /* JHTImerViewController.m */; };
+		E6B0EEB31935A097005565B8 /* JHTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEB21935A097005565B8 /* JHTimerViewController.m */; };
 		E6B0EEB61935A461005565B8 /* JHAddNewSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EEB51935A461005565B8 /* JHAddNewSceneViewController.m */; };
 		E6B0EEBB1935BF17005565B8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EEBA1935BF17005565B8 /* CoreData.framework */; };
 		E6B0EEBD1935BF24005565B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B0EEBC1935BF24005565B8 /* QuartzCore.framework */; };
@@ -39,9 +49,8 @@
 		E6B0EECE1935E809005565B8 /* JHSceneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EECC1935E809005565B8 /* JHSceneTableViewCell.m */; };
 		E6B0EECF1935E809005565B8 /* JHSceneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B0EECD1935E809005565B8 /* JHSceneTableViewCell.xib */; };
 		E6B0EED5193615D9005565B8 /* JHPickerWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B0EED4193615D9005565B8 /* JHPickerWheel.m */; };
-		E6C7BD52193DFBC0005B46B4 /* White.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BD51193DFBC0005B46B4 /* White.m */; };
-		E6C7BD55193DFBC1005B46B4 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BD54193DFBC1005B46B4 /* Color.m */; };
-		E6C7BD58193DFBC1005B46B4 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BD57193DFBC1005B46B4 /* Scene.m */; };
+		E6B334521990C1BB00D9DF8A /* JHSetNewTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B334511990C1BB00D9DF8A /* JHSetNewTimerViewController.m */; };
+		E6B334611990E50500D9DF8A /* JHTimerPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B334601990E50500D9DF8A /* JHTimerPicker.m */; };
 		E6ECE35819423A5D0085F228 /* JHTimerWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE35719423A5D0085F228 /* JHTimerWheel.m */; };
 		E6ECE3601945F81E0085F228 /* BTDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE35F1945F81E0085F228 /* BTDiscovery.m */; };
 		E6ECE3621946CF0D0085F228 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6ECE3611946CF0D0085F228 /* CoreBluetooth.framework */; };
@@ -69,10 +78,30 @@
 		E61753891938CEBA00DB3575 /* JHWhitePickerWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHWhitePickerWheel.m; sourceTree = "<group>"; };
 		E617538E1938E69700DB3575 /* JHFlowWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHFlowWheel.h; sourceTree = "<group>"; };
 		E617538F1938E69700DB3575 /* JHFlowWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHFlowWheel.m; sourceTree = "<group>"; };
+		E6256A1E196C3AB6009936D1 /* JHRoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRoundButton.h; sourceTree = "<group>"; };
+		E6256A1F196C3AB6009936D1 /* JHRoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRoundButton.m; sourceTree = "<group>"; };
+		E6256A21196D611C009936D1 /* White.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = White.h; sourceTree = "<group>"; };
+		E6256A22196D611C009936D1 /* White.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = White.m; sourceTree = "<group>"; };
+		E6256A24196D611C009936D1 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		E6256A25196D611C009936D1 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
+		E6256A27196D611C009936D1 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		E6256A28196D611C009936D1 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
 		E62666A6193C588D002897D2 /* White+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "White+Create.h"; sourceTree = "<group>"; };
 		E62666A7193C588D002897D2 /* White+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "White+Create.m"; sourceTree = "<group>"; };
 		E62666B3193DB9FB002897D2 /* Color+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Color+Create.h"; sourceTree = "<group>"; };
 		E62666B4193DB9FB002897D2 /* Color+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Color+Create.m"; sourceTree = "<group>"; };
+		E646B73A199DDFB300EBA3D1 /* JHSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSegmentedControl.h; sourceTree = "<group>"; };
+		E646B73B199DDFB300EBA3D1 /* JHSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSegmentedControl.m; sourceTree = "<group>"; };
+		E646B73D19A19D7C00EBA3D1 /* JHAlarmSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAlarmSetting.h; sourceTree = "<group>"; };
+		E646B73E19A19D7C00EBA3D1 /* JHAlarmSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAlarmSetting.m; sourceTree = "<group>"; };
+		E646B74019A48ACB00EBA3D1 /* JHAlarmBrightnessSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAlarmBrightnessSettingView.h; sourceTree = "<group>"; };
+		E646B74119A48ACB00EBA3D1 /* JHAlarmBrightnessSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAlarmBrightnessSettingView.m; sourceTree = "<group>"; };
+		E646B74619A792A100EBA3D1 /* JHAlarmTimeAdvanceSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAlarmTimeAdvanceSettingView.h; sourceTree = "<group>"; };
+		E646B74719A792A100EBA3D1 /* JHAlarmTimeAdvanceSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAlarmTimeAdvanceSettingView.m; sourceTree = "<group>"; };
+		E646B74919A88C0900EBA3D1 /* JHAlarmSettingRepeatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAlarmSettingRepeatVC.h; sourceTree = "<group>"; };
+		E646B74A19A88C0900EBA3D1 /* JHAlarmSettingRepeatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAlarmSettingRepeatVC.m; sourceTree = "<group>"; };
+		E646B74C19A88C3600EBA3D1 /* JHAlarmSettingColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAlarmSettingColorVC.h; sourceTree = "<group>"; };
+		E646B74D19A88C3600EBA3D1 /* JHAlarmSettingColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAlarmSettingColorVC.m; sourceTree = "<group>"; };
 		E6B0EE63193599CC005565B8 /* ColumnLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColumnLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B0EE66193599CC005565B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E6B0EE68193599CC005565B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,8 +129,8 @@
 		E6B0EEAC1935A06A005565B8 /* JHColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHColorViewController.m; sourceTree = "<group>"; };
 		E6B0EEAE1935A081005565B8 /* JHWhiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHWhiteViewController.h; sourceTree = "<group>"; };
 		E6B0EEAF1935A081005565B8 /* JHWhiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHWhiteViewController.m; sourceTree = "<group>"; };
-		E6B0EEB11935A097005565B8 /* JHTImerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTImerViewController.h; sourceTree = "<group>"; };
-		E6B0EEB21935A097005565B8 /* JHTImerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTImerViewController.m; sourceTree = "<group>"; };
+		E6B0EEB11935A097005565B8 /* JHTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTimerViewController.h; sourceTree = "<group>"; };
+		E6B0EEB21935A097005565B8 /* JHTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTimerViewController.m; sourceTree = "<group>"; };
 		E6B0EEB41935A461005565B8 /* JHAddNewSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAddNewSceneViewController.h; sourceTree = "<group>"; };
 		E6B0EEB51935A461005565B8 /* JHAddNewSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAddNewSceneViewController.m; sourceTree = "<group>"; };
 		E6B0EEBA1935BF17005565B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -115,12 +144,10 @@
 		E6B0EED3193615D9005565B8 /* JHPickerWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPickerWheel.h; sourceTree = "<group>"; };
 		E6B0EED4193615D9005565B8 /* JHPickerWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPickerWheel.m; sourceTree = "<group>"; };
 		E6B0EED619361647005565B8 /* JHWheelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHWheelDelegate.h; sourceTree = "<group>"; };
-		E6C7BD50193DFBC0005B46B4 /* White.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = White.h; sourceTree = "<group>"; };
-		E6C7BD51193DFBC0005B46B4 /* White.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = White.m; sourceTree = "<group>"; };
-		E6C7BD53193DFBC1005B46B4 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
-		E6C7BD54193DFBC1005B46B4 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
-		E6C7BD56193DFBC1005B46B4 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
-		E6C7BD57193DFBC1005B46B4 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
+		E6B334501990C1BB00D9DF8A /* JHSetNewTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSetNewTimerViewController.h; sourceTree = "<group>"; };
+		E6B334511990C1BB00D9DF8A /* JHSetNewTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSetNewTimerViewController.m; sourceTree = "<group>"; };
+		E6B3345F1990E50500D9DF8A /* JHTimerPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTimerPicker.h; sourceTree = "<group>"; };
+		E6B334601990E50500D9DF8A /* JHTimerPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTimerPicker.m; sourceTree = "<group>"; };
 		E6ECE35619423A5D0085F228 /* JHTimerWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTimerWheel.h; sourceTree = "<group>"; };
 		E6ECE35719423A5D0085F228 /* JHTimerWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTimerWheel.m; sourceTree = "<group>"; };
 		E6ECE35E1945F81E0085F228 /* BTDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDiscovery.h; sourceTree = "<group>"; };
@@ -165,6 +192,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E646B75219A88DD700EBA3D1 /* AlarmSetting */ = {
+			isa = PBXGroup;
+			children = (
+				E646B74C19A88C3600EBA3D1 /* JHAlarmSettingColorVC.h */,
+				E646B74D19A88C3600EBA3D1 /* JHAlarmSettingColorVC.m */,
+				E646B74919A88C0900EBA3D1 /* JHAlarmSettingRepeatVC.h */,
+				E646B74A19A88C0900EBA3D1 /* JHAlarmSettingRepeatVC.m */,
+				E6B334501990C1BB00D9DF8A /* JHSetNewTimerViewController.h */,
+				E6B334511990C1BB00D9DF8A /* JHSetNewTimerViewController.m */,
+			);
+			name = AlarmSetting;
+			sourceTree = "<group>";
+		};
 		E6B0EE5A193599CC005565B8 = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +241,8 @@
 		E6B0EE6C193599CC005565B8 /* ColumnLight */ = {
 			isa = PBXGroup;
 			children = (
+				E646B73D19A19D7C00EBA3D1 /* JHAlarmSetting.h */,
+				E646B73E19A19D7C00EBA3D1 /* JHAlarmSetting.m */,
 				E6ECE35A1945F7170085F228 /* Bluetooth */,
 				E6B0EED21935ED1E005565B8 /* StoryBoard */,
 				E6B0EED11935E822005565B8 /* XIB */,
@@ -264,8 +306,9 @@
 				E6B0EEAC1935A06A005565B8 /* JHColorViewController.m */,
 				E6B0EEAE1935A081005565B8 /* JHWhiteViewController.h */,
 				E6B0EEAF1935A081005565B8 /* JHWhiteViewController.m */,
-				E6B0EEB11935A097005565B8 /* JHTImerViewController.h */,
-				E6B0EEB21935A097005565B8 /* JHTImerViewController.m */,
+				E6B0EEB11935A097005565B8 /* JHTimerViewController.h */,
+				E6B0EEB21935A097005565B8 /* JHTimerViewController.m */,
+				E646B75219A88DD700EBA3D1 /* AlarmSetting */,
 			);
 			name = Center;
 			sourceTree = "<group>";
@@ -294,12 +337,12 @@
 			isa = PBXGroup;
 			children = (
 				E6B0EEC21935E646005565B8 /* ColumnLight.xcdatamodeld */,
-				E6C7BD56193DFBC1005B46B4 /* Scene.h */,
-				E6C7BD57193DFBC1005B46B4 /* Scene.m */,
-				E6C7BD53193DFBC1005B46B4 /* Color.h */,
-				E6C7BD54193DFBC1005B46B4 /* Color.m */,
-				E6C7BD50193DFBC0005B46B4 /* White.h */,
-				E6C7BD51193DFBC0005B46B4 /* White.m */,
+				E6256A27196D611C009936D1 /* Scene.h */,
+				E6256A28196D611C009936D1 /* Scene.m */,
+				E6256A24196D611C009936D1 /* Color.h */,
+				E6256A25196D611C009936D1 /* Color.m */,
+				E6256A21196D611C009936D1 /* White.h */,
+				E6256A22196D611C009936D1 /* White.m */,
 				E62666B3193DB9FB002897D2 /* Color+Create.h */,
 				E62666B4193DB9FB002897D2 /* Color+Create.m */,
 				E62666A6193C588D002897D2 /* White+Create.h */,
@@ -334,8 +377,16 @@
 		E6ECE3591945F5EE0085F228 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E646B74619A792A100EBA3D1 /* JHAlarmTimeAdvanceSettingView.h */,
+				E646B74719A792A100EBA3D1 /* JHAlarmTimeAdvanceSettingView.m */,
+				E646B73A199DDFB300EBA3D1 /* JHSegmentedControl.h */,
+				E646B73B199DDFB300EBA3D1 /* JHSegmentedControl.m */,
+				E6B3345F1990E50500D9DF8A /* JHTimerPicker.h */,
+				E6B334601990E50500D9DF8A /* JHTimerPicker.m */,
 				E6ECE38419500A190085F228 /* JHLoadingHUD.h */,
 				E6ECE38519500A190085F228 /* JHLoadingHUD.m */,
+				E646B74019A48ACB00EBA3D1 /* JHAlarmBrightnessSettingView.h */,
+				E646B74119A48ACB00EBA3D1 /* JHAlarmBrightnessSettingView.m */,
 				E6ECE35619423A5D0085F228 /* JHTimerWheel.h */,
 				E6ECE35719423A5D0085F228 /* JHTimerWheel.m */,
 				E6B0EED619361647005565B8 /* JHWheelDelegate.h */,
@@ -347,6 +398,8 @@
 				E61753891938CEBA00DB3575 /* JHWhitePickerWheel.m */,
 				E6175385193823AF00DB3575 /* JHBrightnessSlider.h */,
 				E6175386193823AF00DB3575 /* JHBrightnessSlider.m */,
+				E6256A1E196C3AB6009936D1 /* JHRoundButton.h */,
+				E6256A1F196C3AB6009936D1 /* JHRoundButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -468,30 +521,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B0EE77193599CC005565B8 /* JHAppDelegate.m in Sources */,
+				E646B74819A792A100EBA3D1 /* JHAlarmTimeAdvanceSettingView.m in Sources */,
+				E6256A26196D611C009936D1 /* Color.m in Sources */,
+				E646B73C199DDFB300EBA3D1 /* JHSegmentedControl.m in Sources */,
+				E646B74219A48ACB00EBA3D1 /* JHAlarmBrightnessSettingView.m in Sources */,
 				E6ECE35819423A5D0085F228 /* JHTimerWheel.m in Sources */,
 				E6B0EEB01935A081005565B8 /* JHWhiteViewController.m in Sources */,
 				E6B0EEC41935E646005565B8 /* ColumnLight.xcdatamodeld in Sources */,
 				E6ECE365194727600085F228 /* JHLightService.m in Sources */,
-				E6C7BD58193DFBC1005B46B4 /* Scene.m in Sources */,
 				E6ECE383194DFB210085F228 /* CBPeripheral+Timer.m in Sources */,
+				E646B73F19A19D7C00EBA3D1 /* JHAlarmSetting.m in Sources */,
 				E617538A1938CEBA00DB3575 /* JHWhitePickerWheel.m in Sources */,
 				E6B0EE9D19359CC8005565B8 /* JHMainViewController.m in Sources */,
-				E6C7BD55193DFBC1005B46B4 /* Color.m in Sources */,
-				E6C7BD52193DFBC0005B46B4 /* White.m in Sources */,
 				E62666B5193DB9FB002897D2 /* Color+Create.m in Sources */,
 				E6B0EEAD1935A06A005565B8 /* JHColorViewController.m in Sources */,
-				E6B0EEB31935A097005565B8 /* JHTImerViewController.m in Sources */,
+				E6B0EEB31935A097005565B8 /* JHTimerViewController.m in Sources */,
+				E6256A29196D611C009936D1 /* Scene.m in Sources */,
+				E6B334521990C1BB00D9DF8A /* JHSetNewTimerViewController.m in Sources */,
 				E6175387193823AF00DB3575 /* JHBrightnessSlider.m in Sources */,
 				E6ECE3601945F81E0085F228 /* BTDiscovery.m in Sources */,
+				E6256A20196C3AB6009936D1 /* JHRoundButton.m in Sources */,
 				E6B0EED5193615D9005565B8 /* JHPickerWheel.m in Sources */,
 				E6B0EEAA1935A047005565B8 /* JHRightPanelViewController.m in Sources */,
 				E6B0EEA71935A03F005565B8 /* JHLeftPanelViewController.m in Sources */,
+				E6256A23196D611C009936D1 /* White.m in Sources */,
 				E6B0EEB61935A461005565B8 /* JHAddNewSceneViewController.m in Sources */,
+				E646B74B19A88C0900EBA3D1 /* JHAlarmSettingRepeatVC.m in Sources */,
+				E646B74E19A88C3600EBA3D1 /* JHAlarmSettingColorVC.m in Sources */,
 				E6B0EECA1935E6E3005565B8 /* Scene+Create.m in Sources */,
 				E6ECE3691948B9990085F228 /* JHDeviceTableViewCell.m in Sources */,
 				E6B0EECE1935E809005565B8 /* JHSceneTableViewCell.m in Sources */,
 				E62666A8193C588D002897D2 /* White+Create.m in Sources */,
 				E6B0EE73193599CC005565B8 /* main.m in Sources */,
+				E6B334611990E50500D9DF8A /* JHTimerPicker.m in Sources */,
 				E6ECE38619500A190085F228 /* JHLoadingHUD.m in Sources */,
 				E61753901938E69700DB3575 /* JHFlowWheel.m in Sources */,
 			);

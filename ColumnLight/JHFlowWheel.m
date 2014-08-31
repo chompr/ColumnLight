@@ -16,6 +16,7 @@
 @property (nonatomic, assign) float currentAngle;
 @property (nonatomic, strong) CAShapeLayer *sectorBrightnessLayer;
 @property (nonatomic, strong) CALayer *centerShadowLayer;
+
 @end
 
 static float deltaAngle;
@@ -100,7 +101,7 @@ static float deltaAngle;
 	
 	// ----- Create sectors
 	for (int i = 0; i < self.numberOfSections; i++) {
-		JHFlowWheelSectorView *im = [[JHFlowWheelSectorView alloc] initWithFrame:CGRectMake(0, 0, 148, 14)];
+		JHFlowWheelSectorView *im = [[JHFlowWheelSectorView alloc] initWithFrame:CGRectMake(0, 0, 142, 14)];
 		
 		im.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
 		im.layer.position = CGPointMake(self.container.bounds.size.width/2.0 - self.container.frame.origin.x,
@@ -144,7 +145,7 @@ static float deltaAngle;
 
 	
 	UIImageView *bg = [[UIImageView alloc] initWithFrame:self.frame];
-	bg.image = [UIImage imageNamed:@"wheelBG.png"];
+	bg.image = [UIImage imageNamed:@"wheelBG2.png"];
 	[self addSubview:bg];
 }
 

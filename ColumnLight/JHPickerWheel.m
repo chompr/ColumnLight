@@ -59,6 +59,7 @@ static float deltaAngle;
 {
 	
 }
+
 - (void)drawWheel
 {
 	self.container = [[UIView alloc] initWithFrame:self.frame];
@@ -94,7 +95,7 @@ static float deltaAngle;
 	}
 	
 	UIImageView *bg = [[UIImageView alloc] initWithFrame:self.frame];
-	bg.image = [UIImage imageNamed:@"wheelBG.png"];
+	bg.image = [UIImage imageNamed:@"wheelBG2.png"];
 	[self addSubview:bg];
 	
 
@@ -382,11 +383,11 @@ static float deltaAngle;
 	[[UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1] setStroke];
 	[aPath stroke];
 	
-	[self.layer setShadowPath:aPath.CGPath];
-	[self.layer setShadowColor:self.sectorColor.CGColor];
-	[self.layer setShadowRadius:8];
-	[self.layer setShadowOpacity:0.3];
-	[self.layer setShadowOffset:CGSizeZero];
+	//[self.layer setShadowPath:aPath.CGPath];
+	//[self.layer setShadowColor:self.sectorColor.CGColor];
+	//[self.layer setShadowRadius:8];
+	//[self.layer setShadowOpacity:0.3];
+	//[self.layer setShadowOffset:CGSizeZero];
 	
 	
 }

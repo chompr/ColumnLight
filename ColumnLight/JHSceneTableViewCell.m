@@ -27,7 +27,7 @@
 {
 	[[self.container subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	
-	UIColor *color = [UIColor colorWithRed:scene.red green:scene.green blue:scene.blue alpha:scene.alpha];
+	UIColor *color = [UIColor colorWithRed:scene.red green:scene.green blue:scene.blue alpha:scene.brightness];
 	ColorLabel *colorLabel = [[ColorLabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	colorLabel.filledColor = color;
 	[self.container addSubview:colorLabel];

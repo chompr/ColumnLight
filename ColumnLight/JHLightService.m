@@ -29,10 +29,12 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 
 @property (nonatomic, strong) CBService *colorService;
 
-@property (nonatomic, strong) CBCharacteristic *redCharacteristic;
-@property (nonatomic, strong) CBCharacteristic *greenCharacteristic;
-@property (nonatomic, strong) CBCharacteristic *blueCharacteristic;
-@property (nonatomic, strong) CBCharacteristic *whiteCharacteristic;
+//@property (nonatomic, strong) CBCharacteristic *redCharacteristic;
+//@property (nonatomic, strong) CBCharacteristic *greenCharacteristic;
+//@property (nonatomic, strong) CBCharacteristic *blueCharacteristic;
+//@property (nonatomic, strong) CBCharacteristic *whiteCharacteristic;
+
+@property (nonatomic, strong) CBCharacteristic *colorCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *powerCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *ambLightCharacteristic;
 
@@ -95,11 +97,7 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
 	NSArray *services = nil;
-	NSArray *uuids = [NSArray arrayWithObjects:RED_CHAR_UUID,
-					  GREEN_CHAR_UUID,
-					  BLUE_CHAR_UUID,
-					  WHITE_CHAR_UUID,
-					  POWER_CHAR_UUID,nil];
+	NSArray *uuids = [NSArray arrayWithObjects:COLOR_CHAR_UUID, POWER_CHAR_UUID,nil];
 	
 	if (peripheral != self.CLPeripheral) {
 		NSLog(@"Wrong peripheral.\n");
@@ -151,24 +149,10 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 	
 	for (CBCharacteristic *characteristic in characteristics) {
 				
-		if ([characteristic.UUID isEqual:RED_CHAR_UUID]) {
-			NSLog(@"Discovered red characteristic %@",[characteristic UUID]);
-			self.redCharacteristic = characteristic;
-		}
-		
-		if ([characteristic.UUID isEqual:GREEN_CHAR_UUID]) {
-			NSLog(@"Discovered green characteristic %@",[characteristic UUID]);
-			self.greenCharacteristic = characteristic;
-		}
-		
-		if ([characteristic.UUID isEqual:BLUE_CHAR_UUID]) {
-			NSLog(@"Discovered blue characteristic %@",[characteristic UUID]);
-			self.blueCharacteristic = characteristic;
-		}
-		
-		if ([characteristic.UUID isEqual:WHITE_CHAR_UUID]) {
-			NSLog(@"Discovered white characteristic %@",[characteristic UUID]);
-			self.whiteCharacteristic = characteristic;
+		if ([characteristic.UUID isEqual:COLOR_CHAR_UUID]) {
+			NSLog(@"Discovered color characteristic %@", [characteristic UUID]);
+			self.colorCharacteristic = characteristic;
+			[self.CLPeripheral readValueForCharacteristic:self.colorCharacteristic];
 		}
 		
 		if ([characteristic.UUID isEqual:POWER_CHAR_UUID]) {
@@ -182,7 +166,7 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 }
 
 #pragma mark - Characteristic Interaction
-
+/*
 - (void)writeRedValue:(int)red
 {
 	NSData *data = nil;
@@ -259,7 +243,26 @@ NSString *kPowerCharacteristicUUIDString = @"fff5";
 	data = [NSData dataWithBytes:&value length:sizeof(value)];
 	[self.CLPeripheral writeValue:data forCharacteristic:self.whiteCharacteristic type:CBCharacteristicWriteWithResponse];
 }
+*/
 
+- (void)writeColorValueWithRed:(int)red green:(int)green blue:(int)blue white:(int)white
+{
+	Byte byte[] = {red, green, blue, white};
+	NSData *data = [[NSData alloc] initWithBytes:byte length:sizeof(byte)];
+	
+	if (!self.CLPeripheral) {
+		NSLog(@"Not connected to a peripheral");
+		return;
+	}
+	
+	if (!self.colorCharacteristic) {
+		NSLog(@"No valid color characteristic");
+		return;
+	}
+	
+	[self.CLPeripheral writeValue:data forCharacteristic:self.colorCharacteristic type:CBCharacteristicWriteWithResponse];
+	
+}
 - (void)writePowerValue:(BOOL)power
 {
 	NSData *data = nil;

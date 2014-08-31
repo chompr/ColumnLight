@@ -11,7 +11,7 @@
 
 @interface JHAddNewSceneViewController : UIViewController
 
-@property NSManagedObjectContext *context;
+@property (nonatomic, strong) NSManagedObjectContext *context;
 
 @property (nonatomic, strong) UIColor *selectedColor;
 

@@ -8,6 +8,12 @@
 
 #import "JHBrightnessSlider.h"
 
+@interface JHBrightnessSlider ()
+
+@property (nonatomic, strong) UIImageView *handleView;
+
+@end
+
 @implementation JHBrightnessSlider
 
 - (id)initWithFrame:(CGRect)frame andBrightness:(CGFloat)brightness
@@ -15,8 +21,23 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-		self.barOffset = 35;
+		self.barOffset = 38;
 		self.currentValue = self.barOffset + brightness * (self.frame.size.width - 2 * self.barOffset);
+		
+		self.handleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barHandle.png"]];
+		self.handleView.center = CGPointMake(self.currentValue, self.frame.size.height/2);
+		
+		[self addSubview:self.handleView];
+		
+		UIImageView *minBright = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
+		minBright.image = [UIImage imageNamed:@"minBright.png"];
+		minBright.center = CGPointMake(15, self.frame.size.height/2);
+		[self addSubview:minBright];
+		
+		UIImageView *maxBright = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
+		maxBright.image = [UIImage imageNamed:@"maxBright.png"];
+		maxBright.center = CGPointMake(self.frame.size.width - 15, self.frame.size.height/2);
+		[self addSubview:maxBright];
     }
     return self;
 }
@@ -31,7 +52,7 @@
 	CGContextMoveToPoint(context, self.barOffset, self.frame.size.height/2);
 	CGContextAddLineToPoint(context, self.frame.size.width - self.barOffset, self.frame.size.height/2);
 	[self.unfilledColor setStroke];
-	CGContextSetLineWidth(context, 20);
+	CGContextSetLineWidth(context, 6);
 	CGContextSetLineCap(context, kCGLineCapRound);
 	CGContextDrawPath(context, kCGPathStroke);
 	
@@ -39,7 +60,7 @@
 	CGContextMoveToPoint(context, self.barOffset, self.frame.size.height/2);
 	CGContextAddLineToPoint(context, self.currentValue, self.frame.size.height/2);
 	[self.filledColor setStroke];
-	CGContextSetLineWidth(context, 20);
+	CGContextSetLineWidth(context, 6);
 	CGContextSetLineCap(context, kCGLineCapRound);
 	CGContextDrawPath(context, kCGPathStroke);
 	
@@ -86,11 +107,16 @@
 	self.currentValue = touchPoint.x;
 	if (self.currentValue < self.barOffset) {
 		self.currentValue = self.barOffset;
-	}else if (self.currentValue > self.frame.size.width - self.barOffset) {
+		
+	} else if (self.currentValue > self.frame.size.width - self.barOffset) {
 		self.currentValue = self.frame.size.width - self.barOffset;
+		
 	}
 	CGFloat brightness = [self calculateBrightness];
 	//NSLog(@"brightness : %f", brightness);
+	
+	self.handleView.center = CGPointMake(self.currentValue, self.frame.size.height/2);
+
 	[self setNeedsDisplay];
 	[self.delegate sliderContinueChangingBrightness:brightness];
 	
@@ -103,10 +129,7 @@
 	[self.delegate sliderEndChangingBrightness:brightness];
 }
 
-- (void)moveHandle:(CGFloat)movement
-{
-	
-}
+
 @end
 
 
